@@ -1,0 +1,49 @@
+@import './var/_colors';
+
+.tech {
+
+  width: $tech-logo-size*2;
+  height: $tech-logo-size*3;
+  background-color: $green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
+  position: relative;
+  margin: 10px 20px;
+  .image {
+    width: $tech-logo-size;
+    //margin: 5px auto;
+  }
+
+  .name {
+    font-size: $text-medium;
+    //margin: 5px auto;
+  }
+
+  .release {
+    font-size: $text-small;
+    font-weight: bold;
+    //margin: 5px auto;
+  }
+
+  .description {
+    font-size: $text-small;
+    text-align: center;
+    margin: inherit 5px;
+  }
+
+  &::before{
+
+    height: $tech-logo-size*3;
+    width: $tech-logo-size*2;
+    border: 2px solid $green;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    content: "";
+  }
+
+}
