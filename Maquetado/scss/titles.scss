@@ -1,0 +1,12 @@
+@import './var/_sizes';
+.title{
+
+    color: black;
+    font-family: $font-stack;
+    font-size: $text-big;
+    background-image: url(./assets/title_icon.svg);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: $title-decoration-width $title-decoration-height;
+    padding: $title-padding-top $title-padding-right $title-padding-bottom $title-padding-left;
+}
