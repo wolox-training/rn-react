@@ -1,4 +1,29 @@
+@import './var/sizes';
 @import './var/_font';
-.body{
+
+.body {
   font-family: $font-stack;
+}
+
+.title {
+  color: red;
+
+  .decoration {
+    height: $title-decoration-height;
+    width: $title-decoration-width;
+  }
+}
+
+.nav {
+  height: $nav-height;
+
+  .logo {
+    height: $nav-logo-height;
+  }
+}
+
+.tech {
+  .logo {
+    size: $tech-logo-size;
+  }
 }
