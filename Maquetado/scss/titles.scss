@@ -1,10 +1,22 @@
 @import './var/_sizes';
 
-.title {
-    color: black;
-    font-family: $font-stack;
-    font-size: $text-big;
-    background: url(./assets/title_icon.svg) no-repeat left;
-    background-size: $title-decoration-width $title-decoration-height;
-    padding: $title-padding-top $title-padding-right $title-padding-bottom $title-padding-left;
+.title-container {
+  display: flex;
+  align-items: center;
+  height: $title-decoration-height;
+    .decoration {
+      width: $title-decoration-width;
+      height: $title-decoration-height;
+      z-index: 1;
+      position: static;
+    }
+
+    .title {
+      color: black;
+      font-size: $text-big;
+      z-index: 2;
+      position: relative;
+      left: -20px;
+    }
+    //padding: $title-padding-top $title-padding-right $title-padding-bottom $title-padding-left;
 }
