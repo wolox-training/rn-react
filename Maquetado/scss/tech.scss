@@ -1,9 +1,9 @@
 @import './var/_colors';
 
 .tech {
-
-  width: $tech-logo-size*2;
-  height: $tech-logo-size*3;
+  padding: 10px 20px;
+  width: $tech-width;
+  height: $tech-height;
   background-color: $green;
   display: flex;
   flex-direction: column;
@@ -32,10 +32,9 @@
     margin: inherit 5px;
   }
 
-  &::before{
-
-    height: $tech-logo-size*3;
-    width: $tech-logo-size*2;
+  &::before {
+    height: $tech-height;
+    width: $tech-width;
     border: 2px solid $green;
     border-radius: 5px;
     position: absolute;
@@ -46,8 +45,8 @@
   }
 }
 
-.tech:hover{
-  &::before{
+.tech:hover {
+  &::before {
     bottom: -8px;
     right: -8px;
   }
