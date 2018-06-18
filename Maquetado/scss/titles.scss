@@ -5,19 +5,19 @@
   align-items: center;
   height: $title-decoration-height;
 
-    .decoration {
-      width: $title-decoration-width;
-      height: $title-decoration-height;
-      z-index: 1;
-      position: static;
-    }
+  .decoration {
+    width: $title-decoration-width;
+    height: $title-decoration-height;
+    z-index: 1;
+    position: static;
+  }
 
-    .title {
-      color: black;
-      font-size: $text-big;
-      z-index: 2;
-      position: relative;
-      left: -20px;
-      top: 5px;
-    }
+  .title {
+    color: black;
+    font-size: $text-big;
+    z-index: 2;
+    position: relative;
+    left: -20px;
+    top: 5px;
+  }
 }
