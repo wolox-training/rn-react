@@ -1,4 +1,9 @@
 @import './var/sizes';
+@import './var/_font';
+
+.body {
+  font-family: $font-stack;
+}
 
 .title {
   color: red;
