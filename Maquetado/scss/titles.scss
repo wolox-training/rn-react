@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   height: $title-decoration-height;
+  
     .decoration {
       width: $title-decoration-width;
       height: $title-decoration-height;
@@ -17,7 +18,7 @@
       z-index: 2;
       position: relative;
       left: -20px;
-      top:5px;
+      top: 5px;
     }
     //padding: $title-padding-top $title-padding-right $title-padding-bottom $title-padding-left;
 }
