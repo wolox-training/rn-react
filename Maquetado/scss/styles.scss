@@ -1,26 +1,24 @@
 @import './var/sizes';
 
-
-
 .title {
   color: red;
 
-  .decoration{
+  .decoration {
     height: $title-decoration-height;
     width: $title-decoration-width;
   }
 }
 
-.nav{
+.nav {
   height: $nav-height;
 
-  .logo{
+  .logo {
     height: $nav-logo-height;
   }
 }
 
-.tech{
-  .logo{
-    size:$tech-logo-size;
+.tech {
+  .logo {
+    size: $tech-logo-size;
   }
 }
