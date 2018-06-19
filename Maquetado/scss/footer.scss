@@ -1,0 +1,31 @@
+@import './var/_sizes';
+@import './var/_colors';
+
+.footer {
+  background-color: $blue;
+  height: 200px;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 10px 40px 0px;
+
+  .logo-text, .detail {
+    color: $white;
+  }
+
+  .logo-text {
+    font-size: $text-big;
+  }
+
+  .logo {
+    margin: 20px;
+  }
+
+  .detail {
+    align-self: flex-end;
+    font-size: $text-small;
+  }
+
+}
