@@ -1,9 +1,10 @@
 @import './var/_colors';
+@import './var/_sizes';
 
 .tech {
-
-  width: $tech-logo-size*2;
-  height: $tech-logo-size*3;
+  padding: 10px 20px;
+  width: $tech-width;
+  height: $tech-height;
   background-color: $green;
   display: flex;
   flex-direction: column;
@@ -12,20 +13,18 @@
   border-radius: 5px;
   position: relative;
   margin: 10px 20px;
+
   .image {
     width: $tech-logo-size;
-    //margin: 5px auto;
   }
 
   .name {
     font-size: $text-medium;
-    //margin: 5px auto;
   }
 
   .release {
     font-size: $text-small;
     font-weight: bold;
-    //margin: 5px auto;
   }
 
   .description {
@@ -34,10 +33,9 @@
     margin: inherit 5px;
   }
 
-  &::before{
-
-    height: $tech-logo-size*3;
-    width: $tech-logo-size*2;
+  &::before {
+    height: $tech-height;
+    width: $tech-width;
     border: 2px solid $green;
     border-radius: 5px;
     position: absolute;
