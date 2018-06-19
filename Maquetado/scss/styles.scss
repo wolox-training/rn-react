@@ -1,3 +1,4 @@
+@import './var/sizes';
 @import './var/_font';
 @import './var/_sizes';
 
@@ -12,9 +13,31 @@
 
 .container {
     display: flex;
-    flex-direction: row;
     justify-content: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
     padding: 0 $container-padding-left;
+}
+
+.title {
+  color: red;
+
+  .decoration {
+    height: $title-decoration-height;
+    width: $title-decoration-width;
+  }
+}
+
+.nav {
+  height: $nav-height;
+
+  .logo {
+    height: $nav-logo-height;
+  }
+}
+
+.tech {
+  .logo {
+    size: $tech-logo-size;
+  }
 }
