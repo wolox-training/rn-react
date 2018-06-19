@@ -42,6 +42,13 @@
     bottom: 4px;
     right: 4px;
     content: "";
+    transition: 0.5s ease;
   }
+}
 
+.tech:hover {
+  &::before {
+    bottom: -8px;
+    right: -8px;
+  }
 }
