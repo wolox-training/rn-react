@@ -1,53 +1,58 @@
 @import './var/_colors';
+@import './var/_sizes';
 
-.tech {
-  padding: 10px 20px;
-  width: $tech-width;
-  height: $tech-height;
-  background-color: $green;
-  display: flex;
-  flex-direction: column;
+.container {
+
+  display: grid;
+  grid-template-columns: 300px 200px 200px;
+  grid-gap: 10px;
+  justify-content: start;
   align-items: center;
-  justify-content: space-around;
-  border-radius: 5px;
-  position: relative;
-  margin: 10px 20px;
+  grid-template-areas:
+   "principal side1 side2"
+   "principal side3 side4";
+    /*
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0 $container-padding-left;
+    */
+    .tech {
+      padding: 10px 20px;
+      width: $tech-width;
+      height: $tech-height;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 5px;
+      position: relative;
+      //margin: 10px 20px;
+      justify-self: center;
+        .image {
+          width: $tech-logo-size;
+        }
 
-  .image {
-    width: $tech-logo-size;
-  }
+        .name {
+          font-size: $text-medium;
+        }
 
-  .name {
-    font-size: $text-medium;
-  }
+        .release {
+          font-size: $text-small;
+          font-weight: bold;
+        }
 
-  .release {
-    font-size: $text-small;
-    font-weight: bold;
-  }
+        .description {
+          font-size: $text-small;
+          text-align: center;
+          margin: inherit 5px;
+        }
+        &:first-child {
+            grid-area: principal;
+            justify-self: end;
+        }
+     }
 
-  .description {
-    font-size: $text-small;
-    text-align: center;
-    margin: inherit 5px;
   }
-
-  &::before {
-    height: $tech-height;
-    width: $tech-width;
-    border: 2px solid $green;
-    border-radius: 5px;
-    position: absolute;
-    bottom: 4px;
-    right: 4px;
-    content: "";
-    transition: 0.5s ease;
-  }
-}
-
-.tech:hover {
-  &::before {
-    bottom: -8px;
-    right: -8px;
-  }
-}

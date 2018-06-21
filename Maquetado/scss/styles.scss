@@ -9,12 +9,3 @@
 .content {
   padding: 90px 200px;
 }
-
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    padding: 0 $container-padding-left;
-}
