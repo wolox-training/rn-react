@@ -5,20 +5,15 @@
 
   display: grid;
   grid-template-columns: 300px 200px 200px;
+  //grid-template-columns: 2fr 1fr 1fr;
   grid-gap: 10px;
   justify-content: start;
   align-items: center;
   grid-template-areas:
    "principal side1 side2"
    "principal side3 side4";
-    /*
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    padding: 0 $container-padding-left;
-    */
+   margin: 50px 100px;
+
     .tech {
       padding: 10px 20px;
       width: $tech-width;
@@ -29,8 +24,8 @@
       justify-content: space-around;
       border-radius: 5px;
       position: relative;
-      //margin: 10px 20px;
       justify-self: center;
+
         .image {
           width: $tech-logo-size;
         }
@@ -52,6 +47,13 @@
         &:first-child {
             grid-area: principal;
             justify-self: end;
+            &::before{
+              height: 600px;
+              border: 1px solid $green;
+              position: absolute;
+              left: 200px;
+              content: "";
+            }
         }
      }
 
