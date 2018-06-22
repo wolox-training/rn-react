@@ -2,59 +2,59 @@
 @import './var/_sizes';
 
 .container {
-
   display: grid;
   grid-template-columns: 300px 200px 200px;
-  //grid-template-columns: 2fr 1fr 1fr;
   grid-gap: 10px;
   justify-content: start;
   align-items: center;
   grid-template-areas:
    "principal side1 side2"
    "principal side3 side4";
-   margin: 50px 100px;
+  margin: 50px 100px;
 
-    .tech {
-      padding: 10px 20px;
-      width: $tech-width;
-      height: $tech-height;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      border-radius: 5px;
-      position: relative;
-      justify-self: center;
+  .tech {
+    padding: 10px 20px;
+    width: $tech-width;
+    height: $tech-height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    position: relative;
+    justify-self: center;
 
-        .image {
-          width: $tech-logo-size;
-        }
+    .image {
+      width: $tech-logo-size;
+    }
 
-        .name {
-          font-size: $text-medium;
-        }
+    .name {
+      font-size: $text-medium;
+    }
 
-        .release {
-          font-size: $text-small;
-          font-weight: bold;
-        }
+    .release {
+      font-size: $text-small;
+      font-weight: bold;
+    }
 
-        .description {
-          font-size: $text-small;
-          text-align: center;
-          margin: inherit 5px;
+    .description {
+      font-size: $text-small;
+      text-align: center;
+      margin: inherit 5px;
+    }
+
+    &:first-child {
+        grid-area: principal;
+        justify-self: end;
+
+        &::before {
+          height: 600px;
+          border: 1px solid $green;
+          position: absolute;
+          left: 200px;
+          content: "";
         }
-        &:first-child {
-            grid-area: principal;
-            justify-self: end;
-            &::before{
-              height: 600px;
-              border: 1px solid $green;
-              position: absolute;
-              left: 200px;
-              content: "";
-            }
-        }
-     }
+    }
+   }
 
   }
