@@ -44,10 +44,12 @@
           text-align: center;
           margin: inherit 5px;
         }
+        
         &:first-child {
             grid-area: principal;
             justify-self: end;
-            &::before{
+
+            &::before {
               height: 600px;
               border: 1px solid $green;
               position: absolute;
@@ -55,6 +57,7 @@
               content: "";
             }
         }
+
      }
 
   }

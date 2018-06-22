@@ -1,0 +1,45 @@
+@media only screen and (max-width: 1024px) {
+  .content {
+    padding: 100px 40px;
+  }
+
+  .navbar {
+    .detail {
+      display: none;
+    }
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "principal";
+
+    .tech {
+      border-radius: 0;
+      border-bottom: 1px solid $green;
+
+      &:first-child {
+          grid-area: principal;
+          justify-self: center;
+
+          &::before {
+            display: none;
+          }
+      }
+
+      &:last-child {
+          border-style: none;
+      }
+    }
+  }
+
+  .footer {
+    .detail {
+      align-self: center;
+    }
+  }
+
+  .title-container {
+    justify-content: center;
+  }
+}
