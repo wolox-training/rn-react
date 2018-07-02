@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Board from './components/board';
+import Board from '../components/Board/index';
 
-class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null)
-        }
-      ],
-      stepNumber: 0,
-      xIsNext: true
-    };
-  }
+class Game extends Component {
+  state = {
+    history: [
+      {
+        squares: Array(9).fill(null)
+      }
+    ],
+    stepNumber: 0,
+    xIsNext: true
+  };
 
-  handleClick(i) {
+  handleClick = (i) => {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
@@ -35,7 +32,7 @@ class Game extends React.Component {
     });
   }
 
-  jumpTo(step) {
+  jumpTo = (step) =>{
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0
@@ -84,8 +81,8 @@ class Game extends React.Component {
 
 Game.propTypes = {
   history:PropTypes.array,
-  stepNumber: PropTypes.number,
-  xIsNext: PropTypes.bool
+  stepNumber: PropTypes.number.isRequired,
+  xIsNext: PropTypes.bool.isRequired
 };
 
 export default Game;
