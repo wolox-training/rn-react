@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 function Square(props) {
   return (
@@ -20,7 +22,7 @@ class Board extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -36,7 +38,7 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -105,7 +107,7 @@ class Game extends React.Component {
     }
 
     return (
-      <React.Fragment className="game">
+      <div className="game">
         <div className="game-board">
           <Board
             squares={current.squares}
@@ -116,10 +118,17 @@ class Game extends React.Component {
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
+
+Game.propTypes = {
+  history:PropTypes.array,
+  stepNumber: PropTypes.number,
+  xIsNext: PropTypes.bool
+};
+
 
 export default Game;
 
