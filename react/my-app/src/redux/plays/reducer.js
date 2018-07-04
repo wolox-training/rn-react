@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { actions } from './action'
 
 const initialState = {
   history: [
@@ -32,17 +33,17 @@ function calculateWinner(squares) {
 
 function reducer(state = initialState, action) {
     switch (action.type) {
-        case 'SQUARE_CLICK':
+        case actions.SQUARE_CLICK:
             const history = state.history.slice(0, state.stepNumber + 1);
             const current = history[history.length - 1];
             const squares = current.squares.slice();
             const winner = calculateWinner(squares);
-            if (winner || squares[action.clicked]) {
+            if (winner || squares[action.payload]) {
               return {...state,
                 winner: winner
               };;
             }
-            squares[action.clicked] = state.xIsNext ? "X" : "O";
+            squares[action.payload] = state.xIsNext ? "X" : "O";
 
             return {...state,
               history: history.concat([
@@ -59,6 +60,4 @@ function reducer(state = initialState, action) {
     }
 }
 
-export default combineReducers({
-    play: reducer
-});
+export default reducer;

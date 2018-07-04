@@ -2,33 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Board from '../components/Board/index';
 import { connect } from "react-redux";
-import { squareClicked } from '../redux/plays/action'
+import playActions from '../redux/plays/action';
 
 class Game extends Component {
-  // state = {
-  //   history: [
-  //     {
-  //       squares: Array(9).fill(null)
-  //     }
-  //   ],
-  //   stepNumber: 0,
-  //   xIsNext: true,
-  //   winner: null
-  // };
 
   jumpTo = (step) =>{
-    // this.setState({
-    //   stepNumber: step,
-    //   xIsNext: (step % 2) === 0
-    // });
   }
 
   handleClick = (id) =>{
-    this.props.dispatch(squareClicked(id));
+    this.props.dispatch(playActions.squareClicked(id));
   }
 
   render() {
-    console.log(this.props);
     const history = this.props.history;
     const current = history[this.props.stepNumber];
     const winner = this.props.winner;
@@ -75,10 +60,10 @@ Game.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  history: state.play.history,
-  stepNumber: state.play.stepNumber,
-  xIsNext: state.play.xIsNext,
-  winner: state.play.winner
+  history: state.history,
+  stepNumber: state.stepNumber,
+  xIsNext: state.xIsNext,
+  winner: state.winner
 });
 
 export default connect(mapStateToProps)(Game);

@@ -5,10 +5,12 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 
-const App = () => (
-  <Provider store={store}>
-    <Game/>
-  </Provider>
-);
+function App(){
+  return (
+    <Provider store={store}>
+      <Game/>
+    </Provider>
+  );
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
