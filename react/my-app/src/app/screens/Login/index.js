@@ -1,16 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import LoginForm from './layout';
 
-class Login extends Component {
-  getInitialValues = () => ({
-    preference: 'spaces',
-    newsletter: true
-  });
-
-  render() {
-    return <LoginForm initialValues={this.getInitialValues()} />;
-  }
-}
+const Login = () => <LoginForm />;
 
 export default Login;

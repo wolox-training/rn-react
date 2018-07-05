@@ -1,6 +1,3 @@
-import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-
 import { actions } from './action';
 
 const initialState = {
@@ -25,7 +22,7 @@ function calculateWinner(squares) {
   return null;
 }
 
-function gameReducer(state = initialState, action) {
+function reducer(state = initialState, action) {
   switch (action.type) {
     case actions.SQUARE_CLICK:
       const history = state.history.slice(0, state.stepNumber + 1);
@@ -55,7 +52,5 @@ function gameReducer(state = initialState, action) {
       return state;
   }
 }
-
-const reducer = combineReducers(gameReducer, formReducer);
 
 export default reducer;

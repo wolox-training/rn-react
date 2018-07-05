@@ -18,7 +18,7 @@ const getValidityClassName = meta => {
 };
 
 export const customInput = props => {
-  const { label, input, type, meta } = props;
+  const { label, input, type, meta, autoFocus} = props;
   return (
     <div
       className={cx(
@@ -28,13 +28,11 @@ export const customInput = props => {
         getValidityClassName(meta)
       )}
     >
-      <input {...input} type={type} autoFocus={props.autoFocus} />
+      <input {...input} type={type} autoFocus={autoFocus} />
       <label>{label}</label>
       {meta.error &&
         meta.touched &&
-        !meta.active && (
-          <div className="feedback-text error-text">{meta.error}</div>
-        )}
+        !meta.active && <div className="feedback-text error-text">{meta.error}</div>}
     </div>
   );
 };
