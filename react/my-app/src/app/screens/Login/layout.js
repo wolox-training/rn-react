@@ -10,7 +10,7 @@ import './styles.css';
 function LoginForm({ handleSubmit }) {
   return (
     <form onSubmit={handleSubmit}>
-      <Field name="eMail" component={customInput} type="text" label="E-Mail" validate={[required]} />
+      <Field name="eMail" component={customInput} type="email" label="E-Mail" validate={[required]} />
       <Field
         name="password"
         component={customInput}
@@ -18,6 +18,7 @@ function LoginForm({ handleSubmit }) {
         label="Password"
         validate={[required, minLength]}
       />
+      <button type="submit">Submit</button>
     </form>
   );
 }
