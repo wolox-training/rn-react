@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 import { required, minLength } from '../../../utils/validations';
 
@@ -22,4 +22,6 @@ function LoginForm({ handleSubmit }) {
   );
 }
 
-export default LoginForm;
+export default reduxForm({
+  form: 'login'
+})(LoginForm);
