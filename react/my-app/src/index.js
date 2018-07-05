@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Game from './app/index';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import store from './redux/store'
+import { Provider } from 'react-redux';
 
-function App(){
+import store from './redux/store';
+import AppRoutes from './app/components/Routes/index';
+import './css/styles.css';
+
+function App() {
   return (
     <Provider store={store}>
-      <Game/>
+      <AppRoutes />
     </Provider>
   );
 }
