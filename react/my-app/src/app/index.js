@@ -1,48 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Board from '../components/Board/index';
+import { connect } from "react-redux";
+import playActions from '../redux/plays/action';
 
 class Game extends Component {
-  state = {
-    history: [
-      {
-        squares: Array(9).fill(null)
-      }
-    ],
-    stepNumber: 0,
-    xIsNext: true
-  };
-
-  handleClick = (i) => {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    const current = history[history.length - 1];
-    const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    squares[i] = this.state.xIsNext ? "X" : "O";
-    this.setState({
-      history: history.concat([
-        {
-          squares: squares
-        }
-      ]),
-      stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
-    });
-  }
 
   jumpTo = (step) =>{
-    this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0
-    });
+  }
+
+  handleClick = (id) =>{
+    this.props.dispatch(playActions.squareClicked(id));
   }
 
   render() {
-    const history = this.state.history;
-    const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
+    const history = this.props.history;
+    const current = history[this.props.stepNumber];
+    const winner = this.props.winner;
 
     const moves = history.map((step, move) => {
       const desc = move ?
@@ -59,7 +33,7 @@ class Game extends Component {
     if (winner) {
       status = "Winner: " + winner;
     } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+      status = "Next player: " + (this.props.xIsNext ? "X" : "O");
     }
 
     return (
@@ -85,24 +59,11 @@ Game.propTypes = {
   xIsNext: PropTypes.bool.isRequired
 };
 
-export default Game;
+const mapStateToProps = state => ({
+  history: state.history,
+  stepNumber: state.stepNumber,
+  xIsNext: state.xIsNext,
+  winner: state.winner
+});
 
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
-}
+export default connect(mapStateToProps)(Game);
