@@ -4,10 +4,11 @@ import { Field, reduxForm } from 'redux-form';
 import { required, minLength } from '../../../utils/validations';
 
 import { customInput } from './components/fields/index';
+import Load from './components/Loader/index';
 
 import './styles.css';
 
-function LoginForm({ handleSubmit }) {
+function LoginForm({ handleSubmit, loading }) {
   return (
     <form onSubmit={handleSubmit}>
       <Field name="eMail" component={customInput} type="email" label="E-Mail" validate={[required]} />
@@ -18,7 +19,10 @@ function LoginForm({ handleSubmit }) {
         label="Password"
         validate={[required, minLength]}
       />
-      <button type="submit">Submit</button>
+      <div>
+        <button type="submit">Submit</button>
+        {loading && <Load />}
+      </div>
     </form>
   );
 }

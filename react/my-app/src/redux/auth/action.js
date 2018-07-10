@@ -7,12 +7,15 @@ export const actions = {
 };
 
 const actionCreators = {
-  getUsers() {
-    return dispatch => {
+  getUsers(values) {
+    debugger;
+    return async dispatch => {
+      debugger;
       dispatch({ type: actions.GET_USERS }); // Esta accion es para, por ejemplo, poner un loading para cuando vuelva el request
-      const response = AuthService.getUsers();
+      const response = await AuthService.getUser(values.eMail, values.password);
       if (response.ok) {
-        dispatch({ type: actions.GET_USERS_SUCCESS, payload: response.data.users });
+        localStorage.setItem('token', response.token);
+        dispatch({ type: actions.GET_USERS_SUCCESS });
       } else {
         dispatch({ type: actions.GET_USERS_FAILURE, payload: response.error });
       }
