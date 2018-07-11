@@ -7,17 +7,20 @@ import { customInput } from './components/fields/index';
 import Load from './components/Loader/index';
 
 import './styles.css';
+import { FIELDS, FORM } from './constants';
+
+const passwordValidation = [required, minLength];
 
 function LoginForm({ handleSubmit, loading }) {
   return (
     <form onSubmit={handleSubmit}>
-      <Field name="eMail" component={customInput} type="email" label="E-Mail" validate={[required]} />
+      <Field name={FIELDS.EMAIL} component={customInput} type="email" label="E-Mail" validate={[required]} />
       <Field
-        name="password"
+        name={FIELDS.PASSWORD}
         component={customInput}
         type="password"
         label="Password"
-        validate={[required, minLength]}
+        validate={passwordValidation}
       />
       <div>
         <button type="submit">Submit</button>
@@ -28,5 +31,5 @@ function LoginForm({ handleSubmit, loading }) {
 }
 
 export default reduxForm({
-  form: 'login'
+  form: FORM.LOGIN
 })(LoginForm);

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 import Game from '../../screens/Game/index';
 import Login from '../../screens/Login/index';
+import ROUTES from '../../../constants/routes';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -15,8 +16,8 @@ function AppRoutes() {
   return (
     <Router>
       <Switch>
-        <Route path="/login" render={() => <Login />} />
-        <PrivateRoute path="/" component={Game} />
+        <Route path={ROUTES.LOGIN} render={() => <Login />} />
+        <PrivateRoute path={ROUTES.HOME} component={Game} />
       </Switch>
     </Router>
   );
