@@ -1,4 +1,5 @@
 import AuthService from '../../services/AuthService';
+import { setToken } from '../../services/LocalStorageService';
 
 export const actions = {
   GET_USERS: '@@AUTH/GET_USERS',
@@ -8,13 +9,11 @@ export const actions = {
 
 const actionCreators = {
   getUsers(values) {
-    debugger;
     return async dispatch => {
-      debugger;
       dispatch({ type: actions.GET_USERS }); // Esta accion es para, por ejemplo, poner un loading para cuando vuelva el request
       const response = await AuthService.getUser(values.eMail, values.password);
       if (response.ok) {
-        localStorage.setItem('token', response.token);
+        setToken(response.token);
         dispatch({ type: actions.GET_USERS_SUCCESS });
       } else {
         dispatch({ type: actions.GET_USERS_FAILURE, payload: response.error });

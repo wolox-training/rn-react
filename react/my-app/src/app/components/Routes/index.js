@@ -1,24 +1,24 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Game from '../../screens/Game/index';
 import Login from '../../screens/Login/index';
 import ROUTES from '../../../constants/routes';
+import Links from '../NavBar/index';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => (localStorage.getItem('token') ? <Component {...props} /> : <Redirect to="/login" />)}
-  />
-);
+import { PrivateRoute } from './components/PrivateRoute';
 
 function AppRoutes() {
   return (
     <Router>
-      <Switch>
-        <Route path={ROUTES.LOGIN} render={() => <Login />} />
-        <PrivateRoute path={ROUTES.HOME} component={Game} />
-      </Switch>
+      <Fragment>
+        <Links />
+        <Switch>
+          <Route path={ROUTES.LOGIN} render={() => <Login />} />
+          <PrivateRoute exact path={ROUTES.SCOREBOARD} component={Login} />
+          <PrivateRoute path={ROUTES.HOME} component={Game} />
+        </Switch>
+      </Fragment>
     </Router>
   );
 }
