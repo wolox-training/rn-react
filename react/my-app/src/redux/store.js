@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { reducer as form } from 'redux-form';
 import thunk from 'redux-thunk';
 
@@ -13,6 +13,7 @@ const reducers = combineReducers({
   auth
 });
 
-const store = createStore(reducers, middlewares);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(middlewares));
 
 export default store;

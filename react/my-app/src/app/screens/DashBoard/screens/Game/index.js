@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Board from '../../../components/Board/index';
-import playActions from '../../../redux/plays/action';
+import Board from '../../../../../components/Board';
+import playActions from '../../../../../redux/plays/action';
 
 class Game extends Component {
   handleClick = id => {

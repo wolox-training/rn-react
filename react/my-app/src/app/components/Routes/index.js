@@ -1,26 +1,28 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import Game from '../../screens/Game/index';
 import Login from '../../screens/Login/index';
 import ROUTES from '../../../constants/routes';
-import Links from '../NavBar/index';
+import DashBoard from '../../screens/DashBoard';
 
 import { PrivateRoute } from './components/PrivateRoute';
 
-function AppRoutes() {
+function AppRoutes({ token }) {
   return (
     <Router>
       <Fragment>
-        <Links />
         <Switch>
-          <Route path={ROUTES.LOGIN} render={() => <Login />} />
-          <PrivateRoute exact path={ROUTES.SCOREBOARD} component={Login} />
-          <PrivateRoute path={ROUTES.HOME} component={Game} />
+          <Route exact path={ROUTES.LOGIN} component={Login} />
+          <PrivateRoute path={ROUTES.HOME} component={DashBoard} token={token} />
         </Switch>
       </Fragment>
     </Router>
   );
 }
 
-export default AppRoutes;
+const mapStateToProps = state => ({
+  token: state.auth.token
+});
+
+export default connect(mapStateToProps)(AppRoutes);
