@@ -37,10 +37,10 @@ const actionCreators = {
       dispatch({ type: actions.SETUP_USER, payload: token });
     };
   },
-  getScore(values) {
+  getScore() {
     return async dispatch => {
       dispatch({ type: actions.GET_SCORE }); // This action is to, for example, put a loading when the request comes back
-      const response = await AuthService.getScore(values.id);
+      const response = await AuthService.getScore();
       dispatch({ type: actions.GET_SCORE_SUCCESS, payload: response });
     };
   }

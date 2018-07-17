@@ -26,7 +26,8 @@ function reducer(state = initialState, action) {
       loading = true;
       return { ...state, loading };
     case actions.GET_SCORE_SUCCESS:
-      return { ...state, x: action.payload.x, o: action.payload.o };
+      loading = false;
+      return { ...state, loading, x: action.payload.x, o: action.payload.o };
     default:
       return state;
   }

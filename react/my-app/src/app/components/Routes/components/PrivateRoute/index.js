@@ -4,15 +4,19 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import ROUTES from '../../../../../constants/routes';
+import { getToken } from '../../../../../services/LocalStorageService';
 
 function PrivateRoute({ component: Component, token, ...rest }) {
   return (
-    <Route {...rest} render={props => (token ? <Component {...props} /> : <Redirect to={ROUTES.LOGIN} />)} />
+    <Route
+      {...rest}
+      render={props => (token || getToken() ? <Component {...props} /> : <Redirect to={ROUTES.LOGIN} />)}
+    />
   );
 }
 
 PrivateRoute.propTypes = {
-  component: PropTypes.element,
+  component: PropTypes.func,
   token: PropTypes.string
 };
 

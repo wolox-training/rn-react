@@ -13,9 +13,9 @@ export default {
     }
     return ret;
   },
-  getScore: async id => {
+  getScore: async () => {
     const scores = await api.get('/score');
-    const score = scores.data.find(item => item.id === id);
+    const score = scores.data.find(item => item.id === 'navi');
     const ret = { x: 0, o: 0 };
     ret.x = score.x;
     ret.o = score.o;

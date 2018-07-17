@@ -1,33 +1,41 @@
-<div id="match-details-curtain">
-  <div id="match-details-container">
-    <div id="title">MATCH STATISTICS</div>
-    <div id="teams-container">
-      <div className="homecomming-team flexbox-items">
-        <div className="homecomming-team logo" />
-        <br />
-        <div className="homecomming-team name" />
-      </div>
-      <div className="flexbox-items">
-        <div id="time-of-match" />
-        <div id="date-of-match" />
-        <br />
-        <div id="vs">
-          <div className="circle" />
-          <hr id="vs-line" />
-          <div className="circle" />
+import React from 'react';
+import PropTypes from 'prop-types';
+
+function Board({ x, o }) {
+  return (
+    <div id="match-details-curtain">
+      <div id="match-details-container">
+        <div id="teams-container">
+          <div className="x-team flexbox-items">
+            <div className="x-team logo" />
+          </div>
+          <div className="flexbox-items">
+            <div id="time-of-match" />
+            <div id="date-of-match" />
+            <br />
+            <div id="vs">
+              <div className="circle" />
+              <hr id="vs-line" />
+              <div className="circle" />
+            </div>
+            <div className="o-team flexbox-items">
+              <div className="o-team logo" />
+            </div>
+          </div>
+          <div id="score-container">
+            <div className="x-team score">{x}</div>
+            <div className="o-team score">{o}</div>
+          </div>
+          <hr id="bottom-devider" />
         </div>
-        <div className="away-team flexbox-items">
-          <div className="away-team logo" />
-          <br />
-          <div className="away-team name" />
-        </div>
       </div>
-      <div id="score-container">
-        <div className="homecomming-team score" />
-        <div className="away-team score" />
-      </div>
-      <hr id="bottom-devider" />
-      <div id="close-details" />
     </div>
-  </div>
-</div>
+  );
+}
+
+Board.propTypes = {
+  x: PropTypes.number,
+  o: PropTypes.number
+};
+
+export default Board;
