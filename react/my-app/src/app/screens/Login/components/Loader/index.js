@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Load() {
+function Loader() {
   return <div id="loader" />;
 }
 
-export default Load;
+export default Loader;

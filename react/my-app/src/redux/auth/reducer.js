@@ -22,6 +22,11 @@ function reducer(state = initialState, action) {
       return { ...state, loading, token: action.payload };
     case actions.DELETE_USER:
       return { ...state, token: null, redirect: false };
+    case actions.GET_SCORE:
+      loading = true;
+      return { ...state, loading };
+    case actions.GET_SCORE_SUCCESS:
+      return { ...state, x: action.payload.x, o: action.payload.o };
     default:
       return state;
   }

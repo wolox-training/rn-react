@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import Board from '../../../../../components/Board';
 import playActions from '../../../../../redux/plays/action';
 
+/* eslint-disable react/no-array-index-key */
+
 class Game extends Component {
   handleClick = id => {
     const { dispatch } = this.props;
@@ -18,14 +20,14 @@ class Game extends Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board squares={current.squares} onClick={i => this.handleClick(i)} />
+          <Board squares={current.squares} onClick={this.handleClick} />
         </div>
         <div className="game-info">
           <div>{winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`}</div>
           <ol>
             {history.map((step, move) => (
               <li key={move}>
-                <button>{move ? `Go to move #${move}` : 'Go to game start'}</button>
+                <button type="button">{move ? `Go to move #${move}` : 'Go to game start'}</button>
               </li>
             ))}
           </ol>

@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
 
 import { required, minLength } from '../../../utils/validations';
 
-import { customInput } from './components/fields/index';
 import Load from './components/Loader/index';
-
+import customInput from './components/fields/index';
 import './styles.css';
 import { FIELDS, FORM } from './constants';
 
 const passwordValidation = [required, minLength];
+const emailValidation = [required];
 
 function LoginForm({ handleSubmit, loading }) {
   return (
     <form onSubmit={handleSubmit}>
-      <Field name={FIELDS.EMAIL} component={customInput} type="email" label="E-Mail" validate={[required]} />
+      <Field
+        name={FIELDS.EMAIL}
+        component={customInput}
+        type="email"
+        label="E-Mail"
+        validate={emailValidation}
+      />
       <Field
         name={FIELDS.PASSWORD}
         component={customInput}
@@ -22,13 +29,18 @@ function LoginForm({ handleSubmit, loading }) {
         label="Password"
         validate={passwordValidation}
       />
-      <div>
+      <Fragment>
         <button type="submit">Submit</button>
         {loading && <Load />}
-      </div>
+      </Fragment>
     </form>
   );
 }
+
+LoginForm.propTypes = {
+  handleSubmit: PropTypes.func,
+  loading: PropTypes.bool
+};
 
 export default reduxForm({
   form: FORM.LOGIN

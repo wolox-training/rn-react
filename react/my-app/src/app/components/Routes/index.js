@@ -1,25 +1,28 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Login from '../../screens/Login/index';
 import ROUTES from '../../../constants/routes';
 import DashBoard from '../../screens/DashBoard';
 
-import { PrivateRoute } from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 
 function AppRoutes({ token }) {
   return (
     <Router>
-      <Fragment>
-        <Switch>
-          <Route exact path={ROUTES.LOGIN} component={Login} />
-          <PrivateRoute path={ROUTES.HOME} component={DashBoard} token={token} />
-        </Switch>
-      </Fragment>
+      <Switch>
+        <Route exact path={ROUTES.LOGIN} component={Login} />
+        <PrivateRoute path={ROUTES.HOME} component={DashBoard} token={token} />
+      </Switch>
     </Router>
   );
 }
+
+AppRoutes.propTypes = {
+  token: PropTypes.string
+};
 
 const mapStateToProps = state => ({
   token: state.auth.token

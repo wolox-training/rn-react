@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Login from '../Login/index';
 import ROUTES from '../../../constants/routes';
@@ -12,8 +12,8 @@ function DashBoard() {
     <Fragment>
       <NavBar />
       <Switch>
-        <Route path={ROUTES.SCOREBOARD} render={() => <Login />} />
-        <Route path={ROUTES.HOME} render={() => <Game />} />
+        <Route path={ROUTES.SCOREBOARD} component={Login} />
+        <Route path={ROUTES.HOME} component={Game} />
       </Switch>
     </Fragment>
   );
