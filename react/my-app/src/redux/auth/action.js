@@ -1,30 +1,22 @@
+import { createTypes, completeTypes, withPostSuccess, withSuccess } from 'redux-recompose';
+
 import AuthService from '../../services/AuthService';
 import { setToken, deleteToken, getToken } from '../../services/LocalStorageService';
 
-export const actions = {
-  GET_USERS: '@@AUTH/GET_USERS',
-  GET_USERS_SUCCESS: '@@AUTH/GET_USERS_SUCCESS',
-  GET_USERS_FAILURE: '@@AUTH/GET_USERS_FAILURE',
-  DELETE_USER: '@@AUTH/DELETE_USER',
-  SETUP_USER: '@@AUTH/SETUP_USER',
-  GET_SCORE: '@@AUTH/GET_SCORE',
-  GET_SCORE_SUCCESS: '@@AUTH/GET_SCORE_SUCCESS'
-};
+export const actions = createTypes(
+  completeTypes(['GET_USERS', 'GET_SCORE'], ['DELETE_USER', 'SETUP_USER']),
+  '@@AUTH'
+);
 
 const actionCreators = {
-  getUsers(values) {
-    return async dispatch => {
-      dispatch({ type: actions.GET_USERS }); // This action is to, for example, put a loading when the request comes back
-      const response = await AuthService.getUser(values.eMail, values.password);
-      if (response.ok) {
-        const { token } = response;
-        setToken(token);
-        dispatch({ type: actions.GET_USERS_SUCCESS, payload: token });
-      } else {
-        dispatch({ type: actions.GET_USERS_FAILURE, payload: response.error });
-      }
-    };
-  },
+  getUsers: values => ({
+    type: actions.GET_USERS,
+    service: AuthService.getUser,
+    payload: values,
+    successSelector: response => response.data[0] && response.data[0].id,
+    target: 'token',
+    injections: withPostSuccess((dispatch, response) => response.data[0] && setToken(response.data[0].id))
+  }),
   logoutUser() {
     return dispatch => {
       deleteToken();
@@ -43,7 +35,12 @@ const actionCreators = {
       const response = await AuthService.getScore();
       dispatch({ type: actions.GET_SCORE_SUCCESS, payload: response });
     };
-  }
+  },
+  getScore2: () => ({
+    type: actions.GET_SCORE,
+    service: AuthService.getScore,
+    target: 'score'
+  })
 };
 
 export default actionCreators;

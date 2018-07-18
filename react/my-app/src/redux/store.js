@@ -1,11 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { reducer as form } from 'redux-form';
 import thunk from 'redux-thunk';
+import { fetchMiddleware } from 'redux-recompose';
 
 import game from './plays/reducer';
 import auth from './auth/reducer';
 
-const middlewares = applyMiddleware(thunk);
+const middlewares = applyMiddleware(fetchMiddleware, thunk);
 
 const reducers = combineReducers({
   game,

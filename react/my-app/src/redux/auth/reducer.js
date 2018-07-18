@@ -1,8 +1,16 @@
+import Immutable from 'seamless-immutable';
+import { createReducer } from 'redux-recompose';
+
 import { actions } from './action';
 
 const initialState = {
   loading: false,
-  token: null
+  token: null,
+  redirect: false
+};
+
+const reducerDescription = {
+  [actions.GET_USERS]: state => state.merge({ loading: true, redirect: false })
 };
 
 function reducer(state = initialState, action) {
@@ -10,14 +18,14 @@ function reducer(state = initialState, action) {
     case actions.GET_USERS:
       let loading = true;
       let redirect = false;
-      return { ...state, loading };
+      return { ...state, loading, redirect };
     case actions.GET_USERS_FAILURE:
       loading = false;
       return { ...state, loading };
     case actions.GET_USERS_SUCCESS:
       loading = false;
       redirect = true;
-      return { ...state, loading, redirect, token: action.payload };
+      return { ...state, loading, redirect, [action.target]: action.payload };
     case actions.SETUP_USER:
       return { ...state, loading, token: action.payload };
     case actions.DELETE_USER:

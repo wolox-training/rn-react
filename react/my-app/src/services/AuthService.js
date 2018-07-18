@@ -1,18 +1,7 @@
 import api from '../config/api';
 
 export default {
-  getUser: async (eMail, password) => {
-    const users = await api.get('/user');
-    const ret = { ok: false, token: null };
-    const user = users.data.find(
-      item => item.eMail.toLowerCase() === eMail.toLowerCase() && item.password === password
-    );
-    if (user) {
-      ret.ok = true;
-      ret.token = 'acces';
-    }
-    return ret;
-  },
+  getUser: async ({ eMail, password }) => api.get(`/user?password=${password}&eMail=${eMail}`),
   getScore: async () => {
     const scores = await api.get('/score');
     const score = scores.data.find(item => item.id === 'navi');
