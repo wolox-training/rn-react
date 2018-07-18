@@ -3,7 +3,7 @@
     {"eMail": "admin@wolox.com.ar", "password": "password","id":"navi" }
   ],
   "score": [
-    {"id":"navi" , "x": 0, "o": 0  }
+    {"id":"navi" , "x": 6, "o": 5  }
   ]
 
 
