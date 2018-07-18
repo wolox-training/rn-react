@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import routes from '../../../../../constants/routes';
 import action from '../../../../../redux/auth/action';
 
-function Links({ logOut }) {
+function Links({ handleLogout }) {
   return (
     <div className="topnav">
       <NavLink exact className="link" to={routes.HOME}>
@@ -15,7 +15,7 @@ function Links({ logOut }) {
       <NavLink className="link" to={routes.SCOREBOARD}>
         ScoreBoard
       </NavLink>
-      <NavLink className="link" onClick={logOut} to={routes.LOGIN}>
+      <NavLink className="link" onClick={handleLogout} to={routes.LOGIN}>
         Logout
       </NavLink>
     </div>
@@ -23,7 +23,7 @@ function Links({ logOut }) {
 }
 
 Links.propTypes = {
-  logOut: PropTypes.func
+  handleLogout: PropTypes.func
 };
 
 function mapDispatchToProps(dispatch) {

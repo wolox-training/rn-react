@@ -17,7 +17,7 @@ const getValidityClassName = meta => {
   return null;
 };
 
-function customInput({ label, input, type, meta, autoFocus }) {
+function CustomInput({ label, input, type, meta, autoFocus }) {
   return (
     <div
       className={cx(
@@ -36,4 +36,4 @@ function customInput({ label, input, type, meta, autoFocus }) {
   );
 }
 
-export default customInput;
+export default CustomInput;
