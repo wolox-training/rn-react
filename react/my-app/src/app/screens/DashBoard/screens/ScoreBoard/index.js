@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import authActions from '../../../../../redux/auth/action';
-import Loader from '../../../Login/components/Loader';
 
 import Board from './layout';
 
@@ -14,8 +13,8 @@ class ScoreBoard extends Component {
   }
 
   render() {
-    const { loading, x, o } = this.props;
-    return loading ? <Loader /> : <Board x={x} o={o} />;
+    const { x, o, loading } = this.props;
+    return <Board x={x} o={o} loading={loading} />;
   }
 }
 
