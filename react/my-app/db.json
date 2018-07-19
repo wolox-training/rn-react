@@ -1,0 +1,22 @@
+{
+  "user": [
+    {
+      "eMail": "admin@wolox.com.ar",
+      "password": "password",
+      "id": "navi"
+    },
+    {
+      "id": "GhYZ56w"
+    },
+    {
+      "id": "ImGq83j"
+    }
+  ],
+  "score": [
+    {
+      "x": 15,
+      "y": 4,
+      "id": "navi"
+    }
+  ]
+}
