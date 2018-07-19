@@ -9,10 +9,6 @@ const initialState = {
   redirect: false
 };
 
-const reducerDescription = {
-  [actions.GET_USERS]: state => state.merge({ loading: true, redirect: false })
-};
-
 function reducer(state = initialState, action) {
   switch (action.type) {
     case actions.GET_USERS:

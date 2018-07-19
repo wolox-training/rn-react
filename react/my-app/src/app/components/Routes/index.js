@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Login from '../../screens/Login/index';
+import Login from '../../screens/Login';
 import ROUTES from '../../../constants/routes';
 import DashBoard from '../../screens/DashBoard';
 

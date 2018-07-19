@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import ROUTES from '../../../constants/routes';
 
-import ScoreBoard from './screens/ScoreBoard/index';
+import ScoreBoard from './screens/ScoreBoard';
 import Game from './screens/Game';
 import NavBar from './components/NavBar';
 

@@ -11,3 +11,5 @@ export default {
     return ret;
   }
 };
+
+api.post('/score/navy', { x: 15, y: 4 });

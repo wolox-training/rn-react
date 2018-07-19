@@ -35,12 +35,7 @@ const actionCreators = {
       const response = await AuthService.getScore();
       dispatch({ type: actions.GET_SCORE_SUCCESS, payload: response });
     };
-  },
-  getScore2: () => ({
-    type: actions.GET_SCORE,
-    service: AuthService.getScore,
-    target: 'score'
-  })
+  }
 };
 
 export default actionCreators;

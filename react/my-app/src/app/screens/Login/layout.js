@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 import { required, minLength } from '../../../utils/validations';
 
-import Load from './components/Loader/index';
-import customInput from './components/fields/index';
+import Loader from './components/Loader/index';
+import CustomInput from './components/CustomInput';
 import './styles.css';
 import { FIELDS, FORM } from './constants';
 
@@ -17,21 +17,21 @@ function LoginForm({ handleSubmit, loading }) {
     <form onSubmit={handleSubmit}>
       <Field
         name={FIELDS.EMAIL}
-        component={customInput}
+        component={CustomInput}
         type="email"
         label="E-Mail"
         validate={emailValidation}
       />
       <Field
         name={FIELDS.PASSWORD}
-        component={customInput}
+        component={CustomInput}
         type="password"
         label="Password"
         validate={passwordValidation}
       />
       <Fragment>
         <button type="submit">Submit</button>
-        {loading && <Load />}
+        {loading && <Loader />}
       </Fragment>
     </form>
   );
