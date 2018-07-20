@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withLoading from '../../../../components/withLoading';
 
 function Board({ x, o }) {
   return (
@@ -29,4 +30,4 @@ Board.propTypes = {
   o: PropTypes.number
 };
 
-export default Board;
+export default withLoading()(Board);
