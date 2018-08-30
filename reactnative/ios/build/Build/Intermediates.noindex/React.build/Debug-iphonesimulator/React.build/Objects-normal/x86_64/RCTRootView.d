@@ -1,0 +1,36 @@
+dependencies: \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTRootView.m \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTRootView.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTRootViewDelegate.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTRootViewInternal.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTEventDispatcher.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTKeyCommands.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Profiler/RCTProfile.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTRootContentView.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Views/RCTView.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Views/RCTComponent.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTTouchHandler.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Modules/RCTUIManager.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Views/RCTViewManager.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/walterfolini/Sources/PlaceMe/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/walterfolini/Sources/PlaceMe/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/walterfolini/Sources/PlaceMe/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Views/UIView+React.h \
+  /Users/walterfolini/Sources/PlaceMe/node_modules/react-native/React/Modules/RCTUIManagerUtils.h
