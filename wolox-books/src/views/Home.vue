@@ -1,22 +1,43 @@
 <template>
   <div id="register-form" class="home">
-    <form class="register-form">
-      <label for="firstname" class="label">First Name</label>
-      <input type="text" name="firstname" id="firstname">
-      <label for="lastname" class="label">Last Name</label>
-      <input type="text" name="firstname" id="lastname">
+    <form class="register-form" @submit.prevent="onSubmit">
+      <label for="firstName" class="label">First Name</label>
+      <input type="text" name="firstName" id="firstName" v-model="firstName">
+      <label for="lastName" class="label">Last Name</label>
+      <input type="text" name="lastName" id="lastName" v-model="lastName">
       <label for="email" class="label">Email</label>
-      <input type="text" name="firstname" id="email">
+      <input type="text" name="email" id="email" v-model="email">
       <label for="password" class="label">Password</label>
-      <input type="password" name="firstname" id="password">
+      <input type="password" name="password" id="password" v-model="password">
       <button>Sign Up</button>
     </form>
-    <a href="/">Login</a>
+    <a href="/">Log In</a>
   </div>
 </template>
 
 <script>
+  module.exports = {
+    data() {
+      return {
+        firstName : "",
+        lastName : "",
+        email : "",
+        password : ""
+      }
+    },
+    methods: {
+      onSubmit(){
+        const data = {
+          'first_name': this.firstName,
+          'last_name': this.lastName,
+          'email': this.email,
+          'password': this.password,
 
+        }
+        console.log(data)
+      }
+    },
+  }
 </script>
 
 <style lang="scss">
