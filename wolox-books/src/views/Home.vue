@@ -1,43 +1,40 @@
-<template>
-  <div id="register-form" class="home">
-    <form class="register-form" @submit.prevent="onSubmit">
-      <label for="firstName" class="label">First Name</label>
-      <input type="text" name="firstName" id="firstName" v-model="firstName">
-      <label for="lastName" class="label">Last Name</label>
-      <input type="text" name="lastName" id="lastName" v-model="lastName">
-      <label for="email" class="label">Email</label>
-      <input type="text" name="email" id="email" v-model="email">
-      <label for="password" class="label">Password</label>
-      <input type="password" name="password" id="password" v-model="password">
-      <button>Sign Up</button>
-    </form>
-    <a href="/">Log In</a>
-  </div>
+<template lang='pug'>
+#register-form.home
+  form.register-form(@submit.prevent="onSubmit")
+    label.label(for="firstName") First Name
+    input#firstName(type="text",name="firstName",v-model="firstName")
+    label.label(for="lastName") Last Name
+    input#lastName(type="text",name="lastName",v-model="lastName")
+    label.label(for="email") Email
+    input#email(type="text",name="email",v-model="email")
+    label.label(for="password") Password
+    input#password(type="password",name="password",v-model="password")
+    button Sign Up
+  a(href="/") Log In
 </template>
 
 <script>
-  module.exports = {
-    data() {
-      return {
-        firstName : "",
-        lastName : "",
-        email : "",
-        password : ""
-      }
-    },
-    methods: {
-      onSubmit(){
-        const data = {
-          'first_name': this.firstName,
-          'last_name': this.lastName,
-          'email': this.email,
-          'password': this.password,
-
-        }
-        console.log(data)
-      }
-    },
+module.exports = {
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    onSubmit() {
+      const data = {
+        first_name: this.firstName,
+        last_name: this.lastName,
+        email: this.email,
+        password: this.password
+      };
+      console.log(data);
+    }
   }
+};
 </script>
 
 <style lang="scss">
