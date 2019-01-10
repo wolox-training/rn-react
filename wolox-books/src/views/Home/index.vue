@@ -1,16 +1,22 @@
 <template lang='pug'>
 #register-form.home
   form.register-form(@submit.prevent="onSubmit")
-    label.label(for="firstName") First Name
+    label.label(for="firstName")
+      | {{$t('register.firstName')}}
     input#firstName(type="text",name="firstName",v-model="firstName")
-    label.label(for="lastName") Last Name
+    label.label(for="lastName")
+      | {{$t('register.lastName')}}
     input#lastName(type="text",name="lastName",v-model="lastName")
-    label.label(for="email") Email
+    label.label(for="email") 
+      | {{$t('register.email')}}
     input#email(type="text",name="email",v-model="email")
-    label.label(for="password") Password
+    label.label(for="password") 
+      | {{$t('register.password')}}
     input#password(type="password",name="password",v-model="password")
-    button Sign Up
-  a(href="/") Log In
+    button 
+      | {{$t('register.signUp')}}
+  a(href="/") 
+    | {{$t('register.logIn')}}
 </template>
 
 <script>
