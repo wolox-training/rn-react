@@ -9,15 +9,15 @@
     input#lastName(type="text" name="lastName" v-model="lastName")
     label.label(for="email")
       | {{$t('register.email')}}
-    input#email(type="text" name="email" v-model="email" v-model.trim="$v.email.$model")
-    .error(v-if="!$v.email.required")
+    input#email(type="text" v-model.trim="email")
+    .error(v-if="!$v.email.required && submitStatus")
       | Email is required
     .error(v-if="!$v.email.email")
       | Pleas enter a valid email
     label.label(for="password")
       | {{$t('register.password')}}
     input#password(type="password" name="password" v-model="password" v-model.trim="$v.password.$model")
-    .error(v-if="!$v.password.required")
+    .error(v-if="!$v.password.required && submitStatus")
       | Password is required
     .error(v-if="!$v.password.validatePassword")
       | Password must have at least one number and one uppercase character
@@ -42,7 +42,7 @@ export default {
       lastName: null,
       email: null,
       password: null,
-      submitStatus: "OK"
+      submitStatus: false
     };
   },
   methods: {
@@ -56,9 +56,9 @@ export default {
       console.log(data);
       this.$v.$touch();
       if (this.$v.$invalid) {
-        this.submitStatus = "ERROR";
+        this.submitStatus = true;
       } else {
-        this.submitStatus = "OK";
+        this.submitStatus = false;
       }
     }
   },
