@@ -20,13 +20,15 @@
 </template>
 
 <script>
-module.exports = {
+import { required } from "vuelidate/lib/validators";
+export default {
   data() {
     return {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      submitStatus: null
     };
   },
   methods: {
@@ -38,6 +40,21 @@ module.exports = {
         password: this.password
       };
       console.log(data);
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        this.submitStatus = "ERROR";
+      } else {
+        // do your submit logic here
+        this.submitStatus = "PENDING";
+        setTimeout(() => {
+          this.submitStatus = "OK";
+        }, 500);
+      }
+    }
+  },
+  validations: {
+    password: {
+      required
     }
   }
 };
