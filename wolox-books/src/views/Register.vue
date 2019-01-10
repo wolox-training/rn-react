@@ -29,6 +29,8 @@
 
 <script>
 import { required, email, helpers } from "vuelidate/lib/validators";
+import { authService } from "../services/AuthService";
+
 const validatePassword = helpers.regex(
   "validatePassword",
   /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/
@@ -54,6 +56,16 @@ export default {
         password: this.password
       };
       console.log(data);
+      authService.logIn({
+        user: {
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password,
+          first_name: this.firstName,
+          last_name: this.lastName,
+          locale: "en"
+        }
+      });
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = true;
