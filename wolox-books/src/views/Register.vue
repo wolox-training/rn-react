@@ -7,19 +7,33 @@
     label.label(for="lastName")
       | {{$t('register.lastName')}}
     input#lastName(type="text" name="lastName" v-model="lastName")
-    label.label(for="email") 
+    label.label(for="email")
       | {{$t('register.email')}}
-    input#email(type="text" name="email" v-model="email")
-    label.label(for="password") 
+    input#email(type="text" name="email" v-model="email" v-model.trim="$v.email.$model")
+    .error(v-if="!$v.email.required")
+      | Email is required
+    .error(v-if="!$v.email.email")
+      | Pleas enter a valid email
+    label.label(for="password")
       | {{$t('register.password')}}
-    input#password(type="password" name="password" v-model="password")
-    button 
+    input#password(type="password" name="password" v-model="password" v-model.trim="$v.password.$model")
+    .error(v-if="!$v.password.required")
+      | Password is required
+    .error(v-if="!$v.password.validatePassword")
+      | Password must have at least one number and one uppercase character
+    button
       | {{$t('register.signUp')}}
-  a(href="/") 
+  a.button-login(href="/")
     | {{$t('register.logIn')}}
 </template>
 
 <script>
+import { required, email, helpers } from "vuelidate/lib/validators";
+const validatePassword = helpers.regex(
+  "validatePassword",
+  /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/
+);
+
 export default {
   name: "Register",
   data() {
@@ -27,7 +41,8 @@ export default {
       firstName: null,
       lastName: null,
       email: null,
-      password: null
+      password: null,
+      submitStatus: "OK"
     };
   },
   methods: {
@@ -39,6 +54,22 @@ export default {
         password: this.password
       };
       console.log(data);
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        this.submitStatus = "ERROR";
+      } else {
+        this.submitStatus = "OK";
+      }
+    }
+  },
+  validations: {
+    password: {
+      required,
+      validatePassword
+    },
+    email: {
+      required,
+      email
     }
   }
 };
@@ -60,5 +91,11 @@ export default {
 
 .label {
   text-align: left;
+}
+
+.button-login {
+  width: 300px;
+  text-align: center;
+  align-self: center;
 }
 </style>
