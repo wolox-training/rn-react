@@ -1,18 +1,22 @@
 <template lang='pug'>
-#register-form.home
-  form.register-form(@submit.prevent="onSubmit")
-    label.label(for="firstName") First Name
-    input#firstName(type="text",name="firstName",v-model="firstName")
-    label.label(for="lastName") Last Name
-    input#lastName(type="text",name="lastName",v-model="lastName")
-    label.label(for="email") Email
-    input#email(type="text",name="email",v-model="email")
-    .form-group(:class="{ 'form-group--error': $v.password.$error }")
-      label.label(for="password") Password
-      input#password(type="password",name="password",v-model="password",v-model.trim="$v.password.$model")
-    .error(v-if="!$v.password.required") Field is required
-    button Sign Up
-  a(href="/") Log In
+.home
+  form.register-form(@submit.prevent="onSubmit" novalidate)
+    label.label(for="firstName")
+     | First Name
+    input#firstName(type="text" name="firstName" v-model="firstName")
+    label.label(for="lastName")
+      | Last Name
+    input#lastName(type="text" name="lastName" v-model="lastName")
+    label.label(for="email")
+      | Email
+    input#email(type="text" name="email" v-model="email")
+    label.label(for="password")
+      | Password
+    input#password(type="password" name="password" v-model="password" v-model.trim="$v.password.$model")
+    button
+      | Sign Up
+  a(href="/")
+    | Log In
 </template>
 
 <script>
