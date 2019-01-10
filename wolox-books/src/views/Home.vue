@@ -7,20 +7,24 @@
     input#lastName(type="text",name="lastName",v-model="lastName")
     label.label(for="email") Email
     input#email(type="text",name="email",v-model="email")
-    label.label(for="password") Password
-    input#password(type="password",name="password",v-model="password")
+    .form-group(:class="{ 'form-group--error': $v.password.$error }")
+      label.label(for="password") Password
+      input#password(type="password",name="password",v-model="password",v-model.trim="$v.password.$model")
+    .error(v-if="!$v.password.required") Field is required
     button Sign Up
   a(href="/") Log In
 </template>
 
 <script>
-module.exports = {
+import { required } from "vuelidate/lib/validators";
+export default {
   data() {
     return {
       firstName: "",
       lastName: "",
       email: "",
-      password: ""
+      password: "",
+      submitStatus: null
     };
   },
   methods: {
@@ -32,6 +36,21 @@ module.exports = {
         password: this.password
       };
       console.log(data);
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        this.submitStatus = "ERROR";
+      } else {
+        // do your submit logic here
+        this.submitStatus = "PENDING";
+        setTimeout(() => {
+          this.submitStatus = "OK";
+        }, 500);
+      }
+    }
+  },
+  validations: {
+    password: {
+      required
     }
   }
 };
