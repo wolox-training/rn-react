@@ -1,5 +1,4 @@
 <template lang='pug'>
-#register-form.home
   form.register-form(@submit.prevent="onSubmit")
     label.label(for="firstName")
       | {{$t('register.firstName')}}
