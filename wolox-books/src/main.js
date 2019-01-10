@@ -3,7 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueI18n from 'vue-i18n'
-import { Register as messages } from './views/Home/i18n'
+import { Register as messages } from './config/i18n'
+import Vuelidate from 'vuelidate'
+
+Vue.use(Vuelidate)
 
 Vue.use(VueI18n)
 
