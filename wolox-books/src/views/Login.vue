@@ -1,0 +1,87 @@
+<template lang='pug'>
+.home
+  form.login-form(@submit.prevent='onSubmit')
+    label.label(for='email')
+      |{{$t('register.email')}}
+    input#email(type='text' v-model='email')
+    .error(v-if='!$v.email.required && submitStatus')
+      |Email is required
+    .error(v-if='!$v.email.email')
+      |Pleas enter a valid email
+    label.label(for='password')
+      |{{$t('register.password')}}
+    input#password(type='password' name='password' v-model='password')
+    .error(v-if='!$v.password.required && submitStatus')
+      |Password is required
+    button
+      |{{$t('register.logiIn')}}
+  a.button-login(href='/')
+    |{{$t('register.signUp')}}
+</template>
+
+<script>
+import { required, email } from 'vuelidate/lib/validators'
+import { authService } from '../services/AuthService'
+
+export default {
+  name: 'Register',
+  data () {
+    return {
+      firstName: null,
+      lastName: null,
+      email: null,
+      password: null,
+      submitStatus: false
+    }
+  },
+  methods: {
+    onSubmit () {
+      authService.logIn({
+        user: {
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password,
+          first_name: this.firstName,
+          last_name: this.lastName,
+          locale: 'en'
+        }
+      })
+      this.$v.$touch()
+      this.submitStatus = this.$v.$invalid
+    }
+  },
+  validations: {
+    password: {
+      required
+    },
+    email: {
+      required,
+      email
+    }
+  }
+}
+</script>
+
+<style lang='scss'>
+.home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  align-self: center;
+}
+
+.label {
+  text-align: left;
+}
+
+.button-login {
+  max-width: 300px;
+  text-align: center;
+  align-self: center;
+}
+</style>
