@@ -6,47 +6,47 @@
     label.label(for='lastName')
       | {{$t('register.lastName')}}
     input#lastName(type='text' name='lastName' v-model='lastName')
-    label.label(for='email') 
+    label.label(for='email')
       | {{$t('register.email')}}
     input#email(type='text' name='email' v-model='email')
-    label.label(for='password') 
+    label.label(for='password')
       | {{$t('register.password')}}
     input#password(type='password' name='password' v-model='password')
-    button 
+    button
       | {{$t('register.signUp')}}
-  a(href='/') 
+  a(href='/')
     | {{$t('register.logIn')}}
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators'
 export default {
-  data() {
+  data () {
     return {
       firstName: '',
       lastName: '',
       email: '',
       password: '',
       submitStatus: null
-    };
+    }
   },
   methods: {
-    onSubmit() {
+    onSubmit () {
       const data = {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
         password: this.password
-      };
-      console.log(data);
-      this.$v.$touch();
+      }
+      console.log(data)
+      this.$v.$touch()
       if (this.$v.$invalid) {
-        this.submitStatus = 'ERROR';
+        this.submitStatus = 'ERROR'
       } else {
-        this.submitStatus = 'PENDING';
+        this.submitStatus = 'PENDING'
         setTimeout(() => {
-          this.submitStatus = 'OK';
-        }, 500);
+          this.submitStatus = 'OK'
+        }, 500)
       }
     }
   },
@@ -55,7 +55,7 @@ export default {
       required
     }
   }
-};
+}
 </script>
 
 <style lang='scss'>
