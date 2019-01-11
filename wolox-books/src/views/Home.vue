@@ -1,25 +1,58 @@
-<template>
-  <div id="register-form" class="home">
-    <form class="register-form">
-      <label for="firstname" class="label">First Name</label>
-      <input type="text" name="firstname" id="firstname">
-      <label for="lastname" class="label">Last Name</label>
-      <input type="text" name="firstname" id="lastname">
-      <label for="email" class="label">Email</label>
-      <input type="text" name="firstname" id="email">
-      <label for="password" class="label">Password</label>
-      <input type="password" name="firstname" id="password">
-      <button>Sign Up</button>
-    </form>
-    <a href="/">Login</a>
-  </div>
+<template lang='pug'>
+.home
+  form.register-form(@submit.prevent='onSubmit' novalidate)
+    label.label(for='firstName')
+     | First Name
+    input#firstName(type='text' name='firstName' v-model='firstName')
+    label.label(for='lastName')
+      | Last Name
+    input#lastName(type='text' name='lastName' v-model='lastName')
+    label.label(for='email')
+      | Email
+    input#email(type='text' name='email' v-model='email')
+    label.label(for='password')
+      | Password
+    input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
+    button
+      | Sign Up
+  a(href='/')
+    | Log In
 </template>
 
 <script>
-
+import { required } from 'vuelidate/lib/validators'
+export default {
+  data () {
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      submitted: null
+    }
+  },
+  methods: {
+    onSubmit () {
+      const data = {
+        first_name: this.firstName,
+        last_name: this.lastName,
+        email: this.email,
+        password: this.password
+      }
+      console.log(data)
+      this.$v.$touch()
+      this.submitted = this.$v.$invalid
+    }
+  },
+  validations: {
+    password: {
+      required
+    }
+  }
+}
 </script>
 
-<style lang="scss">
+<style lang='scss' scoped>
 .home {
   display: flex;
   justify-content: center;
