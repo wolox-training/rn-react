@@ -44,7 +44,6 @@ export default {
       if (this.$v.$invalid) {
         this.submitStatus = "ERROR";
       } else {
-        // do your submit logic here
         this.submitStatus = "PENDING";
         setTimeout(() => {
           this.submitStatus = "OK";
