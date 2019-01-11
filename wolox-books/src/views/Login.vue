@@ -43,7 +43,8 @@ export default {
             password: this.password
           }
         })
-        if (response.ok) { console.log(response.payload.accesToken) }
+        debugger
+        if (response.ok) { console.log(response.data.acces_token) }
       }
     }
   },
