@@ -34,14 +34,17 @@ export default {
   },
   methods: {
     onSubmit () {
-      authService.logIn({
-        session: {
-          email: this.email,
-          password: this.password
-        }
-      })
       this.$v.$touch()
       this.submitStatus = this.$v.$invalid
+      if (!this.$v.$invalid) {
+        const response = authService.logIn({
+          session: {
+            email: this.email,
+            password: this.password
+          }
+        })
+        if (response.ok) { console.log(response.payload.accesToken) }
+      }
     }
   },
   validations: {

@@ -49,18 +49,20 @@ export default {
   },
   methods: {
     onSubmit () {
-      authService.signUp({
-        user: {
-          email: this.email,
-          password: this.password,
-          password_confirmation: this.password,
-          first_name: this.firstName,
-          last_name: this.lastName,
-          locale: 'en'
-        }
-      })
       this.$v.$touch()
       this.submitStatus = this.$v.$invalid
+      if (!this.$v.$invalid) {
+        authService.signUp({
+          user: {
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.password,
+            first_name: this.firstName,
+            last_name: this.lastName,
+            locale: 'en'
+          }
+        })
+      }
     }
   },
   validations: {
