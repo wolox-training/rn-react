@@ -9,7 +9,7 @@ Vue.use(VueI18n)
 
 const i18n = new VueI18n({
   locale: 'en',
-  messages // set locale messages
+  messages
 })
 
 Vue.config.productionTip = true
