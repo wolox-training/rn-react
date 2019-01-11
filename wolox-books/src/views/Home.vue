@@ -1,33 +1,33 @@
 <template lang='pug'>
 .home
-  form.register-form(@submit.prevent="onSubmit" novalidate)
-    label.label(for="firstName")
+  form.register-form(@submit.prevent='onSubmit' novalidate)
+    label.label(for='firstName')
      | First Name
-    input#firstName(type="text" name="firstName" v-model="firstName")
-    label.label(for="lastName")
+    input#firstName(type='text' name='firstName' v-model='firstName')
+    label.label(for='lastName')
       | Last Name
-    input#lastName(type="text" name="lastName" v-model="lastName")
-    label.label(for="email")
+    input#lastName(type='text' name='lastName' v-model='lastName')
+    label.label(for='email')
       | Email
-    input#email(type="text" name="email" v-model="email")
-    label.label(for="password")
+    input#email(type='text' name='email' v-model='email')
+    label.label(for='password')
       | Password
-    input#password(type="password" name="password" v-model="password" v-model.trim="$v.password.$model")
+    input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
     button
       | Sign Up
-  a(href="/")
+  a(href='/')
     | Log In
 </template>
 
 <script>
-import { required } from "vuelidate/lib/validators";
+import { required } from 'vuelidate/lib/validators';
 export default {
   data() {
     return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
       submitStatus: null
     };
   },
@@ -42,11 +42,11 @@ export default {
       console.log(data);
       this.$v.$touch();
       if (this.$v.$invalid) {
-        this.submitStatus = "ERROR";
+        this.submitStatus = 'ERROR';
       } else {
-        this.submitStatus = "PENDING";
+        this.submitStatus = 'PENDING';
         setTimeout(() => {
-          this.submitStatus = "OK";
+          this.submitStatus = 'OK';
         }, 500);
       }
     }
@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang='scss'>
 .home {
   display: flex;
   justify-content: center;
