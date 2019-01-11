@@ -28,7 +28,7 @@ export default {
       lastName: '',
       email: '',
       password: '',
-      submitStatus: null
+      submitted: null
     }
   },
   methods: {
@@ -41,7 +41,7 @@ export default {
       }
       console.log(data)
       this.$v.$touch()
-      this.submitStatus = this.$v.$invalid
+      this.submitted = this.$v.$invalid
     }
   },
   validations: {
