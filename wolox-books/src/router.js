@@ -6,16 +6,19 @@ import Login from './views/Login'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/sign-up',
-      name: 'sign-up',
       component: Register
     },
     {
       path: '/login',
-      name: 'login',
       component: Login
+    },
+    {
+      path: '/',
+      redirect: { name: 'login' }
     }
   ]
 })

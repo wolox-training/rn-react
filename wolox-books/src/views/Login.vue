@@ -14,8 +14,8 @@
     .error(v-if='!$v.password.required && submitStatus')
       |Password is required
     button
-      |{{$t('register.logiIn')}}
-  a.button-login(href='/sign-up')
+      |{{$t('register.logIn')}}
+  router-link.button-login(to='/sign-up')
     |{{$t('register.signUp')}}
 </template>
 
@@ -57,11 +57,13 @@ export default {
 </script>
 
 <style lang='scss'>
+
 .home {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
+
 .login-form {
   display: flex;
   flex-direction: column;

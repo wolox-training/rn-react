@@ -23,7 +23,7 @@
       |Password must have at least one number and one uppercase character
     button
       |{{$t('register.signUp')}}
-  a.button-login(href='/login')
+  router-link.button-login(to='/login')
     |{{$t('register.logIn')}}
 </template>
 
