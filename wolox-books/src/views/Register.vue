@@ -19,14 +19,14 @@
 </template>
 
 <script>
-import { required } from "vuelidate/lib/validators";
+import { required } from 'vuelidate/lib/validators';
 export default {
   data() {
     return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
       submitStatus: null
     };
   },
@@ -41,11 +41,11 @@ export default {
       console.log(data);
       this.$v.$touch();
       if (this.$v.$invalid) {
-        this.submitStatus = "ERROR";
+        this.submitStatus = 'ERROR';
       } else {
-        this.submitStatus = "PENDING";
+        this.submitStatus = 'PENDING';
         setTimeout(() => {
-          this.submitStatus = "OK";
+          this.submitStatus = 'OK';
         }, 500);
       }
     }
@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang='scss'>
 .home {
   display: flex;
   justify-content: center;
