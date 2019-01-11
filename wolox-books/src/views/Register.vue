@@ -49,13 +49,6 @@ export default {
   },
   methods: {
     onSubmit () {
-      const data = {
-        first_name: this.firstName,
-        last_name: this.lastName,
-        email: this.email,
-        password: this.password
-      }
-      console.log(data)
       authService.logIn({
         user: {
           email: this.email,
