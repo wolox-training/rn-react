@@ -1,21 +1,21 @@
 <template lang='pug'>
   form.register-form(@submit.prevent='onSubmit')
     label.label(for='firstName')
-      | {{$t('register.firstName')}}
+      |{{$t('register.firstName')}}
     input#firstName(type='text' name='firstName' v-model='firstName')
     label.label(for='lastName')
-      | {{$t('register.lastName')}}
+      |{{$t('register.lastName')}}
     input#lastName(type='text' name='lastName' v-model='lastName')
     label.label(for='email')
-      | {{$t('register.email')}}
+      |{{$t('register.email')}}
     input#email(type='text' name='email' v-model='email')
     label.label(for='password')
-      | {{$t('register.password')}}
+      |{{$t('register.password')}}
     input#password(type='password' name='password' v-model='password')
     button
-      | {{$t('register.signUp')}}
+      |{{$t('register.signUp')}}
   a(href='/')
-    | {{$t('register.logIn')}}
+    |{{$t('register.logIn')}}
 </template>
 
 <script>
