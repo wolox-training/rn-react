@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      authService.logIn({
+      authService.signUp({
         user: {
           email: this.email,
           password: this.password,
