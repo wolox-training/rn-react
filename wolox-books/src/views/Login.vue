@@ -24,11 +24,9 @@ import { required, email } from 'vuelidate/lib/validators'
 import { authService } from '../services/AuthService'
 
 export default {
-  name: 'Register',
+  name: 'Login',
   data () {
     return {
-      firstName: null,
-      lastName: null,
       email: null,
       password: null,
       submitStatus: false
@@ -37,13 +35,9 @@ export default {
   methods: {
     onSubmit () {
       authService.logIn({
-        user: {
+        session: {
           email: this.email,
-          password: this.password,
-          password_confirmation: this.password,
-          first_name: this.firstName,
-          last_name: this.lastName,
-          locale: 'en'
+          password: this.password
         }
       })
       this.$v.$touch()
