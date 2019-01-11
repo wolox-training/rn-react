@@ -28,7 +28,7 @@ export default {
       lastName: '',
       email: '',
       password: '',
-      submitStatus: null
+      submitted: null
     }
   },
   methods: {
@@ -41,14 +41,7 @@ export default {
       }
       console.log(data)
       this.$v.$touch()
-      if (this.$v.$invalid) {
-        this.submitStatus = 'ERROR'
-      } else {
-        this.submitStatus = 'PENDING'
-        setTimeout(() => {
-          this.submitStatus = 'OK'
-        }, 500)
-      }
+      this.submitted = this.$v.$invalid
     }
   },
   validations: {
@@ -59,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .home {
   display: flex;
   justify-content: center;
