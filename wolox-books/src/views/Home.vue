@@ -41,14 +41,7 @@ export default {
       }
       console.log(data)
       this.$v.$touch()
-      if (this.$v.$invalid) {
-        this.submitStatus = 'ERROR'
-      } else {
-        this.submitStatus = 'PENDING'
-        setTimeout(() => {
-          this.submitStatus = 'OK'
-        }, 500)
-      }
+      this.submitStatus = this.$v.$invalid
     }
   },
   validations: {
