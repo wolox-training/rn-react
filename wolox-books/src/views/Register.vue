@@ -55,11 +55,7 @@ export default {
       }
       console.log(data)
       this.$v.$touch()
-      if (this.$v.$invalid) {
-        this.submitStatus = true
-      } else {
-        this.submitStatus = false
-      }
+      this.submitStatus = this.$v.$invalid
     }
   },
   validations: {
@@ -84,7 +80,7 @@ export default {
 .register-form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  max-width: 300px;
   align-self: center;
 }
 
@@ -93,7 +89,7 @@ export default {
 }
 
 .button-login {
-  width: 300px;
+  max-width: 300px;
   text-align: center;
   align-self: center;
 }
