@@ -15,7 +15,7 @@
       |Password is required
     button
       |{{$t('register.logiIn')}}
-  a.button-login(href='/')
+  a.button-login(href='/sign-up')
     |{{$t('register.signUp')}}
 </template>
 
