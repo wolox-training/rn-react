@@ -1,22 +1,22 @@
 <template lang='pug'>
 .home
-  form.register-form(@submit.prevent='onSubmit' novalidate)
+  form.register-form(@submit.prevent='onSubmit')
     label.label(for='firstName')
-     | First Name
+      | {{$t('register.firstName')}}
     input#firstName(type='text' name='firstName' v-model='firstName')
     label.label(for='lastName')
-      | Last Name
+      | {{$t('register.lastName')}}
     input#lastName(type='text' name='lastName' v-model='lastName')
     label.label(for='email')
-      | Email
+      | {{$t('register.email')}}
     input#email(type='text' name='email' v-model='email')
     label.label(for='password')
-      | Password
-    input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
+      | {{$t('register.password')}}
+    input#password(type='password' name='password' v-model='password')
     button
-      | Sign Up
+      | {{$t('register.signUp')}}
   a(href='/')
-    | Log In
+    | {{$t('register.logIn')}}
 </template>
 
 <script>
