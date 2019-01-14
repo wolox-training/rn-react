@@ -9,18 +9,30 @@
     input#lastName(type='text' name='lastName' v-model='lastName')
     label.label(for='email')
       | {{$t('register.email')}}
-    input#email(type='text' name='email' v-model='email')
+    input#email(type='text' v-model.trim='email')
+    .error(v-if='!$v.email.required && submitStatus')
+      | Email is required
+    .error(v-if='!$v.email.email')
+      | Pleas enter a valid email
     label.label(for='password')
       | {{$t('register.password')}}
-    input#password(type='password' name='password' v-model='password')
+    input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
+    .error(v-if='!$v.password.required && submitStatus')
+      | Password is required
+    .error(v-if='!$v.password.validatePassword')
+      | Password must have at least one number and one uppercase character
     button
       | {{$t('register.signUp')}}
-  a(href='/')
+  router-link.button-login(to='/')
     | {{$t('register.logIn')}}
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
+import { required, email, helpers } from 'vuelidate/lib/validators'
+const validatePassword = helpers.regex(
+  'validatePassword',
+  /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/
+)
 export default {
   data () {
     return {
@@ -46,7 +58,12 @@ export default {
   },
   validations: {
     password: {
-      required
+      required,
+      validatePassword
+    },
+    email: {
+      required,
+      email
     }
   }
 }
@@ -58,13 +75,21 @@ export default {
   justify-content: center;
   flex-direction: column;
 }
+
 .register-form {
   display: flex;
   flex-direction: column;
   width: 300px;
   align-self: center;
 }
+
 .label {
   text-align: left;
+}
+
+.button-login {
+  width: 300px;
+  text-align: center;
+  align-self: center;
 }
 </style>
