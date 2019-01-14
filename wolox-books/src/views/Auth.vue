@@ -1,7 +1,8 @@
 <template lang='pug'>
 .home
-  router-link.button-logout(to='/login')
-  | Logout
+  .register-form
+    router-link.button-logout(to='/login')
+      | Logout
 </template>
 
 <script>
@@ -15,6 +16,16 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+.register-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  align-self: center;
+}
+
+.label {
+  text-align: left;
 }
 
 .button-logout {
