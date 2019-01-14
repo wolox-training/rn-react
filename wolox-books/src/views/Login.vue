@@ -2,21 +2,21 @@
 .home
   form.login-form(@submit.prevent='onSubmit')
     label.label(for='email')
-      |{{$t('register.email')}}
+      | {{$t('register.email')}}
     input#email(type='text' v-model='email')
     .error(v-if='!$v.email.required && submitStatus')
-      |Email is required
+      | Email is required
     .error(v-if='!$v.email.email')
-      |Pleas enter a valid email
+      | Pleas enter a valid email
     label.label(for='password')
-      |{{$t('register.password')}}
+      | {{$t('register.password')}}
     input#password(type='password' name='password' v-model='password')
     .error(v-if='!$v.password.required && submitStatus')
-      |Password is required
+      | Password is required
     button
-      |{{$t('register.logIn')}}
+      | {{$t('register.logIn')}}
   router-link.button-login(to='/sign-up')
-    |{{$t('register.signUp')}}
+    | {{$t('register.signUp')}}
 </template>
 
 <script>
