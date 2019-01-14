@@ -23,7 +23,7 @@
       | {{$t('register.password.valid')}}
     button
       | {{$t('register.signUp')}}
-  router-link.button-login(to='/')
+  router-link.button-login(to='/login')
     | {{$t('register.logIn')}}
 </template>
 
