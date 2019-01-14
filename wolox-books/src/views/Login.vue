@@ -33,11 +33,11 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
+    async onSubmit () {
       this.$v.$touch()
       this.submitStatus = this.$v.$invalid
       if (!this.$v.$invalid) {
-        const response = authService.logIn({
+        const response = await authService.logIn({
           session: {
             email: this.email,
             password: this.password
@@ -45,6 +45,7 @@ export default {
         })
         debugger
         if (response.ok) { console.log(response.data.acces_token) }
+        debugger
       }
     }
   },
