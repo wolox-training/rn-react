@@ -1,7 +1,7 @@
 import { create } from 'apisauce'
 
 const api = create({
-  baseURL: 'https://wbooks-api-stage.herokuapp.com/api/v1',
+  baseURL: process.env.VUE_APP_API_BASE_URL,
   timeout: 5000
 })
 
