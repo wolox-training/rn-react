@@ -7,12 +7,14 @@
 
 <script>
 import { localStorageService } from '../services/LocalStorage'
+import { clearHeaders } from '../config/api'
 
 export default {
   name: 'Auth',
   methods: {
     logout () {
       localStorageService.removeAccessToken()
+      clearHeaders()
       this.$router.push('/login')
     }
   }

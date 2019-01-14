@@ -1,4 +1,4 @@
-import api from '../config/api'
+import { api } from '../config/api'
 
 export const authService = {
   logIn: async userDetails => api.post('/users/sessions', userDetails),

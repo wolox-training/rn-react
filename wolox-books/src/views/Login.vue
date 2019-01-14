@@ -23,6 +23,7 @@
 import { required, email } from 'vuelidate/lib/validators'
 import { authService } from '../services/AuthService'
 import { localStorageService } from '../services/LocalStorage'
+import { changeHeaders } from '../config/api'
 
 export default {
   name: 'Login',
@@ -46,6 +47,7 @@ export default {
         })
         if (response.ok) {
           localStorageService.setAccessToken(response.data.access_token)
+          changeHeaders()
           this.$router.push('/auth')
         }
       }
