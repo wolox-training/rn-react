@@ -36,7 +36,7 @@ export default {
     onSubmit () {
       this.$v.$touch()
       this.submitStatus = this.$v.$invalid
-      if (this.submitStatus) {
+      if (!this.submitStatus) {
         logIn({
           session: {
             email: this.email,

@@ -51,7 +51,7 @@ export default {
     onSubmit () {
       this.$v.$touch()
       this.submitted = this.$v.$invalid
-      if (this.submitted) {
+      if (!this.submitted) {
         signUp({
           user: {
             email: this.email,
