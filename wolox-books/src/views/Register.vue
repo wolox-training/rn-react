@@ -1,48 +1,34 @@
 <template lang='pug'>
-#register-form.home
+.home
   form.register-form(@submit.prevent='onSubmit')
     label.label(for='firstName')
-      |{{$t('register.firstName')}}
+      | {{$t('register.firstName')}}
     input#firstName(type='text' name='firstName' v-model='firstName')
     label.label(for='lastName')
-      |{{$t('register.lastName')}}
+      | {{$t('register.lastName')}}
     input#lastName(type='text' name='lastName' v-model='lastName')
     label.label(for='email')
-      |{{$t('register.email')}}
-    input#email(type='text' v-model.trim='email')
-    .error(v-if='!$v.email.required && submitStatus')
-      |Email is required
-    .error(v-if='!$v.email.email')
-      |Pleas enter a valid email
+      | {{$t('register.email')}}
+    input#email(type='text' name='email' v-model='email')
     label.label(for='password')
-      |{{$t('register.password')}}
-    input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
-    .error(v-if='!$v.password.required && submitStatus')
-      |Password is required
-    .error(v-if='!$v.password.validatePassword')
-      |Password must have at least one number and one uppercase character
+      | {{$t('register.password')}}
+    input#password(type='password' name='password' v-model='password')
     button
-      |{{$t('register.signUp')}}
-  a.button-login(href='/')
-    |{{$t('register.logIn')}}
+      | {{$t('register.signUp')}}
+  a(href='/')
+    | {{$t('register.logIn')}}
 </template>
 
 <script>
-import { required, email, helpers } from 'vuelidate/lib/validators'
-const validatePassword = helpers.regex(
-  'validatePassword',
-  /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/
-)
-
+import { required } from 'vuelidate/lib/validators'
 export default {
-  name: 'Register',
   data () {
     return {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null,
-      submitStatus: false
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      submitted: null
     }
   },
   methods: {
@@ -55,23 +41,18 @@ export default {
       }
       console.log(data)
       this.$v.$touch()
-      this.submitStatus = this.$v.$invalid
+      this.submitted = this.$v.$invalid
     }
   },
   validations: {
     password: {
-      required,
-      validatePassword
-    },
-    email: {
-      required,
-      email
+      required
     }
   }
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .home {
   display: flex;
   justify-content: center;
@@ -80,17 +61,10 @@ export default {
 .register-form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  width: 300px;
   align-self: center;
 }
-
 .label {
   text-align: left;
-}
-
-.button-login {
-  max-width: 300px;
-  text-align: center;
-  align-self: center;
 }
 </style>
