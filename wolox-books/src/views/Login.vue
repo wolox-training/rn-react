@@ -34,14 +34,16 @@ export default {
   },
   methods: {
     onSubmit () {
-      logIn({
-        session: {
-          email: this.email,
-          password: this.password
-        }
-      })
       this.$v.$touch()
       this.submitStatus = this.$v.$invalid
+      if (this.submitStatus) {
+        logIn({
+          session: {
+            email: this.email,
+            password: this.password
+          }
+        })
+      }
     }
   },
   validations: {
@@ -57,7 +59,6 @@ export default {
 </script>
 
 <style lang='scss'>
-
 .home {
   display: flex;
   justify-content: center;
