@@ -1,13 +1,21 @@
 <template lang='pug'>
 .home
   .register-form
-    router-link.button-logout(to='/login')
+    button.button-logout(v-on:click="logout")
       | Logout
 </template>
 
 <script>
+import { localStorageService } from '../services/LocalStorage'
+
 export default {
-  name: 'Auth'
+  name: 'Auth',
+  methods: {
+    logout () {
+      localStorageService.removeAccessToken()
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 
