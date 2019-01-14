@@ -2,26 +2,26 @@
 .home
   form.login-form(@submit.prevent='onSubmit')
     label.label(for='email')
-      |{{$t('register.email')}}
+      | {{$t('register.email')}}
     input#email(type='text' v-model='email')
     .error(v-if='!$v.email.required && submitStatus')
-      |Email is required
+      | {{$t('register.email.required')}}
     .error(v-if='!$v.email.email')
-      |Pleas enter a valid email
+      | {{$t('register.email.valid')}}
     label.label(for='password')
-      |{{$t('register.password')}}
+      | {{$t('register.password')}}
     input#password(type='password' name='password' v-model='password')
     .error(v-if='!$v.password.required && submitStatus')
-      |Password is required
+      | {{$t('register.password.required')}}
     button
-      |{{$t('register.logIn')}}
+      | {{$t('register.logIn')}}
   router-link.button-login(to='/sign-up')
-    |{{$t('register.signUp')}}
+    | {{$t('register.signUp')}}
 </template>
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
-import { authService } from '../services/AuthService'
+import { logIn } from '../services/AuthService'
 
 export default {
   name: 'Login',
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      authService.logIn({
+      logIn({
         session: {
           email: this.email,
           password: this.password
