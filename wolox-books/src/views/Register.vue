@@ -29,7 +29,7 @@
 
 <script>
 import { required, email, helpers } from 'vuelidate/lib/validators'
-import { authService } from '../services/AuthService'
+import { signUp } from '../services/AuthService'
 
 const validatePassword = helpers.regex(
   'validatePassword',
@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      authService.logIn({
+      signUp({
         user: {
           email: this.email,
           password: this.password,
