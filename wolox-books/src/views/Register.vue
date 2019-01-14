@@ -1,30 +1,30 @@
 <template lang='pug'>
-#register-form.home
+.home
   form.register-form(@submit.prevent='onSubmit')
     label.label(for='firstName')
-      |{{$t('register.firstName')}}
+      | {{$t('register.firstName')}}
     input#firstName(type='text' name='firstName' v-model='firstName')
     label.label(for='lastName')
-      |{{$t('register.lastName')}}
+      | {{$t('register.lastName')}}
     input#lastName(type='text' name='lastName' v-model='lastName')
     label.label(for='email')
-      |{{$t('register.email')}}
+      | {{$t('register.email')}}
     input#email(type='text' v-model.trim='email')
     .error(v-if='!$v.email.required && submitStatus')
-      |Email is required
+      | Email is required
     .error(v-if='!$v.email.email')
-      |Pleas enter a valid email
+      | Pleas enter a valid email
     label.label(for='password')
-      |{{$t('register.password')}}
+      | {{$t('register.password')}}
     input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
     .error(v-if='!$v.password.required && submitStatus')
-      |Password is required
+      | Password is required
     .error(v-if='!$v.password.validatePassword')
-      |Password must have at least one number and one uppercase character
+      | Password must have at least one number and one uppercase character
     button
-      |{{$t('register.signUp')}}
-  a.button-login(href='/')
-    |{{$t('register.logIn')}}
+      | {{$t('register.signUp')}}
+  router-link.button-login(to='/')
+    | {{$t('register.logIn')}}
 </template>
 
 <script>
@@ -40,11 +40,11 @@ export default {
   name: 'Register',
   data () {
     return {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null,
-      submitStatus: false
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      submitted: false
     }
   },
   methods: {
@@ -60,7 +60,7 @@ export default {
         }
       })
       this.$v.$touch()
-      this.submitStatus = this.$v.$invalid
+      this.submitted = this.$v.$invalid
     }
   },
   validations: {
@@ -76,16 +76,17 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .home {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
+
 .register-form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  width: 300px;
   align-self: center;
 }
 
@@ -94,7 +95,7 @@ export default {
 }
 
 .button-login {
-  max-width: 300px;
+  width: 300px;
   text-align: center;
   align-self: center;
 }
