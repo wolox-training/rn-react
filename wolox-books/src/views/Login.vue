@@ -22,6 +22,7 @@
 <script>
 import { required, email } from 'vuelidate/lib/validators'
 import { authService } from '../services/AuthService'
+import { localStorageService } from '../services/LocalStorage'
 
 export default {
   name: 'Login',
@@ -43,7 +44,10 @@ export default {
             password: this.password
           }
         })
-        if (response.ok) { console.log(response.data.acces_token) }
+        if (response.ok) {
+          localStorageService.setAccessToken(response.data.access_token)
+          this.$router.push('/auth')
+        }
       }
     }
   },
