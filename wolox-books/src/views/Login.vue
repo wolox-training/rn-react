@@ -43,9 +43,7 @@ export default {
             password: this.password
           }
         })
-        debugger
         if (response.ok) { console.log(response.data.acces_token) }
-        debugger
       }
     }
   },
