@@ -1,8 +1,7 @@
 <template lang='pug'>
 .home
-  .navbar
-    router-link.button-logout(to='/login')
-    | Log out
+  router-link.button-logout(to='/login')
+  | Logout
 </template>
 
 <script>
@@ -12,18 +11,10 @@ export default {
 </script>
 
 <style lang='scss'>
-
 .home {
   display: flex;
   justify-content: center;
   flex-direction: column;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  align-self: center;
 }
 
 .button-logout {
