@@ -36,12 +36,12 @@ export default {
     onSubmit () {
       this.$v.$touch()
       this.submitted = this.$v.$invalid
-      debugger
+      const { email, password } = this
       if (!this.submitted) {
         logIn({
           session: {
-            email: this.email,
-            password: this.password
+            email,
+            password
           }
         })
       }
