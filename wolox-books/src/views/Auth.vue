@@ -28,10 +28,10 @@ export default {
     },
     async fetchBooks () {
       const response = await getBooks()
-      if (response.ok) {
-        this.books = this.response.data
-      }
       debugger
+      if (response.ok) {
+        this.books = response.data
+      }
     }
   }
 }
