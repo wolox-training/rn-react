@@ -21,6 +21,7 @@
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
+import { localStorageService } from '../services/LocalStorage'
 import { logIn } from '../services/AuthService'
 
 export default {
@@ -39,7 +40,10 @@ export default {
       if (!this.$v.$invalid) {
         const { email, password } = this
         logIn(email, password).then(response => {
-          if (response.ok) console.log(response.data.acces_token)
+          if (response.ok) {
+            localStorageService.setAccessToken(response.data.access_token)
+            this.$router.push('/auth')
+          }
         })
       }
     }
@@ -56,7 +60,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .home {
   display: flex;
   justify-content: center;
