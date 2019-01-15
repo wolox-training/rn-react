@@ -6,33 +6,33 @@
       | {{$t('title')}}
     label.label(for='firstName')
       | {{$t('register.firstName')}}
-    input.input#firstName(type='text' name='firstName' v-model='firstName')
+    input#firstName(type='text' name='firstName' v-model='firstName')
     label.label(for='lastName')
       | {{$t('register.lastName')}}
-    input.input#lastName(type='text' name='lastName' v-model='lastName')
+    input#lastName(type='text' name='lastName' v-model='lastName')
     label.label(for='email')
-      | {{$t('register.email')}}
-    input.input#email(type='text' v-model.trim='email')
-    .error(v-if='!$v.email.required && submitStatus')
-      | Email is required
+      | {{$t('register.email.name')}}
+    input#email(type='text' v-model.trim='email')
+    .error(v-if='!$v.email.required && submitted')
+      | {{$t('register.email.required')}}
     .error(v-if='!$v.email.email')
-      | Pleas enter a valid email
+      | {{$t('register.email.valid')}}
     label.label(for='password')
-      | {{$t('register.password')}}
-    input.input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
-    .error(v-if='!$v.password.required && submitStatus')
-      | Password is required
+      | {{$t('register.password.name')}}
+    input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
+    .error(v-if='!$v.password.required && submitted')
+      | {{$t('register.password.required')}}
     .error(v-if='!$v.password.validatePassword')
-      | Password must have at least one number and one uppercase character
-    button.button-signup
+      | {{$t('register.password.valid')}}
+    button
       | {{$t('register.signUp')}}
-    router-link.button-login(to='/login')
-      | {{$t('register.logIn')}}
+  router-link.button-login(to='/login')
+    | {{$t('register.logIn')}}
 </template>
 
 <script>
 import { required, email, helpers } from 'vuelidate/lib/validators'
-import { authService } from '../services/AuthService'
+import { signUp } from '../services/AuthService'
 
 const validatePassword = helpers.regex(
   'validatePassword',
@@ -43,19 +43,19 @@ export default {
   name: 'Register',
   data () {
     return {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null,
-      submitStatus: false
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      submitted: false
     }
   },
   methods: {
     onSubmit () {
       this.$v.$touch()
-      this.submitStatus = this.$v.$invalid
-      if (!this.$v.$invalid) {
-        authService.signUp({
+      this.submitted = this.$v.$invalid
+      if (!this.submitted) {
+        signUp({
           user: {
             email: this.email,
             password: this.password,

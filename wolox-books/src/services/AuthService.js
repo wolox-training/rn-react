@@ -1,6 +1,6 @@
-import { api } from '../config/api'
+import api from '../config/api'
 
-export const authService = {
-  logIn: async userDetails => api.post('/users/sessions', userDetails),
-  signUp: userDetails => api.post('/users', userDetails)
-}
+export const logIn = (email, password) =>
+  api.post('/users/sessions', { session: { email, password } })
+
+export const signUp = userDetails => api.post('/users', userDetails)
