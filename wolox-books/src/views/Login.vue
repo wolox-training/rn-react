@@ -33,7 +33,7 @@ export default {
     }
   },
   methods: {
-    async onSubmit () {
+    onSubmit () {
       this.$v.$touch()
       this.submitted = this.$v.$invalid
       if (!this.$v.$invalid) {
