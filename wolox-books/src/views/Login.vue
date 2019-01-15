@@ -36,13 +36,10 @@ export default {
     onSubmit () {
       this.$v.$touch()
       this.submitted = this.$v.$invalid
-      const { email, password } = this
-      if (!this.submitted) {
-        logIn({
-          session: {
-            email,
-            password
-          }
+      if (!this.$v.$invalid) {
+        const { email, password } = this
+        logIn(email, password).then(response => {
+          if (response.ok) console.log(response.data.acces_token)
         })
       }
     }
