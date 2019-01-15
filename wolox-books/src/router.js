@@ -4,11 +4,20 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
+      path: '/sign-up',
+      component: () => import('./views/Register.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/Login.vue')
+    },
+    {
       path: '/',
-      name: 'home',
-      component: () => import(/* webpackChunkName: "about" */ './views/Register.vue')
+      redirect: { name: 'login' }
     }
   ]
 })
