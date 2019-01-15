@@ -24,7 +24,7 @@
       | Password is required
     .error(v-if='!$v.password.validatePassword')
       | Password must have at least one number and one uppercase character
-    button
+    button.button-signup
       | {{$t('register.signUp')}}
     router-link.button-login(to='/login')
       | {{$t('register.logIn')}}
@@ -83,6 +83,7 @@ export default {
 
 <style lang='scss' scoped>
 @import '../scss/variables/sizes';
+@import '../scss/variables/color';
 
 .home {
   display: flex;
@@ -101,9 +102,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-self: center;
-  padding: 40px 20px;
+  padding: 40px 20px 0 20px ;
   width: 300px;
-  height: fit-content;
   background-color: #F4F4F4;
   border-top: 5px solid #00BFFF;
 }
@@ -121,9 +121,35 @@ export default {
 }
 
 .button-login {
-  width: fit-content;
+  border: solid 2px $celery;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  background-color: $celery;
+  color: $white;
   text-align: center;
-  height: 30px;
-  background-color: green;
+}
+
+.button-signup {
+  border: solid 2px $celery;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  background-color: $white;
+  color: $celery;
+  text-align: center;
+  margin-top: 20px;
 }
 </style>
