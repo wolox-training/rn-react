@@ -1,30 +1,33 @@
 <template lang='pug'>
 .home
   form.register-form(@submit.prevent='onSubmit')
+    img.title-image(src='../assets/wolox_logo.svg')
+    span.title
+      | {{$t('title')}}
     label.label(for='firstName')
       | {{$t('register.firstName')}}
-    input#firstName(type='text' name='firstName' v-model='firstName')
+    input.input#firstName(type='text' name='firstName' v-model='firstName')
     label.label(for='lastName')
       | {{$t('register.lastName')}}
-    input#lastName(type='text' name='lastName' v-model='lastName')
+    input.input#lastName(type='text' name='lastName' v-model='lastName')
     label.label(for='email')
       | {{$t('register.email')}}
-    input#email(type='text' v-model.trim='email')
+    input.input#email(type='text' v-model.trim='email')
     .error(v-if='!$v.email.required && submitStatus')
       | Email is required
     .error(v-if='!$v.email.email')
       | Pleas enter a valid email
     label.label(for='password')
       | {{$t('register.password')}}
-    input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
+    input.input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
     .error(v-if='!$v.password.required && submitStatus')
       | Password is required
     .error(v-if='!$v.password.validatePassword')
       | Password must have at least one number and one uppercase character
     button
       | {{$t('register.signUp')}}
-  router-link.button-login(to='/login')
-    | {{$t('register.logIn')}}
+    router-link.button-login(to='/login')
+      | {{$t('register.logIn')}}
 </template>
 
 <script>
@@ -78,27 +81,49 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
+@import '../scss/variables/sizes';
+
 .home {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  height: $content-height;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 .register-form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
   align-self: center;
+  padding: 40px 20px;
+  width: 300px;
+  height: fit-content;
+  background-color: #F4F4F4;
+  border-top: 5px solid #00BFFF;
 }
 
 .label {
   text-align: left;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.input {
+  height: 30px;
+  border-radius: 5px;
 }
 
 .button-login {
-  max-width: 300px;
+  width: fit-content;
   text-align: center;
-  align-self: center;
+  height: 30px;
+  background-color: green;
 }
 </style>

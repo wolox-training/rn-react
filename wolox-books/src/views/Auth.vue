@@ -37,12 +37,13 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .home {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
+
 .register-form {
   display: flex;
   flex-direction: column;
