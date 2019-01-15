@@ -8,14 +8,30 @@
 <script>
 import { localStorageService } from '../services/LocalStorage'
 import { clearHeaders } from '../config/api'
+import { getBooks } from '../services/BookService'
 
 export default {
   name: 'Auth',
+  data () {
+    return {
+      books: null
+    }
+  },
+  created () {
+    this.fetchBooks()
+  },
   methods: {
     logout () {
       localStorageService.removeAccessToken()
       clearHeaders()
       this.$router.push('/login')
+    },
+    async fetchBooks () {
+      const response = await getBooks()
+      if (response.ok) {
+        this.books = this.response.data
+      }
+      debugger
     }
   }
 }

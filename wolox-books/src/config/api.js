@@ -9,7 +9,7 @@ export const api = create({
 export const changeHeaders = () =>
   api.setHeaders({
     'Content-Type': 'application/json',
-    'Authorization': localStorageService.getAccessToken() || ''
+    'Authorization': localStorageService.getAccessToken()
   })
 
 export const clearHeaders = () => api.deleteHeader('Authorization')
