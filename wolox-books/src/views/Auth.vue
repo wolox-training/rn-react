@@ -1,5 +1,9 @@
 <template lang='pug'>
-.register-form
+.navbar
+  .logo
+    img.title-image(src='../assets/wolox_logo.svg')
+    span.title
+      | {{$t('title')}}
   button.button-logout(@click="logout")
     | Logout
 </template>
@@ -37,22 +41,37 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.register-form {
+.navbar {
+  display: flex;
+  height: 60px;
+  border-radius: 2px;
+  box-shadow: 0px 1px 10px #999;
+  justify-content: space-around;
+}
+
+.logo {
+  align-self: center;
   display: flex;
   flex-direction: column;
-  max-width: 300px;
-  width: 100%;
-  align-self: center;
+}
+
+.title {
+  text-align: center;
+  margin-top: 10px;
 }
 
 .label {
   text-align: left;
 }
 
+.title-image {
+  height: 30px;
+}
+
 .button-logout {
-  max-width: 300px;
-  width: 100%;
-  text-align: center;
+  height: 20px;
+  width: 20px;
   align-self: center;
+  text-align: center;
 }
 </style>
