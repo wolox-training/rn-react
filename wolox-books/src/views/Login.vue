@@ -2,17 +2,17 @@
 .home
   form.login-form(@submit.prevent='onSubmit')
     label.label(for='email')
-      | {{$t('register.email')}}
+      | {{$t('register.email.name')}}
     input#email(type='text' v-model='email')
-    .error(v-if='!$v.email.required && submitStatus')
-      | Email is required
+    .error(v-if='!$v.email.required && submitted')
+      | {{$t('register.email.required')}}
     .error(v-if='!$v.email.email')
-      | Pleas enter a valid email
+      | {{$t('register.email.valid')}}
     label.label(for='password')
-      | {{$t('register.password')}}
+      | {{$t('register.password.name')}}
     input#password(type='password' name='password' v-model='password')
-    .error(v-if='!$v.password.required && submitStatus')
-      | Password is required
+    .error(v-if='!$v.password.required && submitted')
+      | {{$t('register.password.required')}}
     button
       | {{$t('register.logIn')}}
   router-link.button-login(to='/sign-up')
@@ -21,8 +21,8 @@
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
-import { authService } from '../services/AuthService'
 import { localStorageService } from '../services/LocalStorage'
+import { logIn } from '../services/AuthService'
 
 export default {
   name: 'Login',
@@ -30,24 +30,21 @@ export default {
     return {
       email: null,
       password: null,
-      submitStatus: false
+      submitted: false
     }
   },
   methods: {
-    async onSubmit () {
+    onSubmit () {
       this.$v.$touch()
-      this.submitStatus = this.$v.$invalid
+      this.submitted = this.$v.$invalid
       if (!this.$v.$invalid) {
-        const response = await authService.logIn({
-          session: {
-            email: this.email,
-            password: this.password
+        const { email, password } = this
+        logIn(email, password).then(response => {
+          if (response.ok) {
+            localStorageService.setAccessToken(response.data.access_token)
+            this.$router.push('/auth')
           }
         })
-        if (response.ok) {
-          localStorageService.setAccessToken(response.data.access_token)
-          this.$router.push('/auth')
-        }
       }
     }
   },
@@ -64,7 +61,6 @@ export default {
 </script>
 
 <style lang='scss'>
-
 .home {
   display: flex;
   justify-content: center;
