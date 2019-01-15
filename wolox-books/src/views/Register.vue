@@ -84,6 +84,7 @@ export default {
   justify-content: center;
   flex-direction: column;
 }
+
 .register-form {
   display: flex;
   flex-direction: column;
