@@ -38,13 +38,9 @@ export default {
       this.submitted = this.$v.$invalid
       if (!this.$v.$invalid) {
         const { email, password } = this
-        const response = logIn({
-          session: {
-            email,
-            password
-          }
+        logIn(email, password).then(response => {
+          if (response.ok) console.log(response.data.acces_token)
         })
-        if (response.ok) { console.log(response.data.acces_token) }
       }
     }
   },
