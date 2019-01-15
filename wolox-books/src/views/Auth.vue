@@ -1,15 +1,13 @@
 <template lang='pug'>
-.home
-  .register-form
-    button.button-logout(v-on:click="logout")
-      | Logout
+.register-form
+  button.button-logout(@click="logout")
+    | Logout
 </template>
 
 <script>
 import { localStorageService } from '../services/LocalStorage'
 
 export default {
-  name: 'Auth',
   methods: {
     logout () {
       localStorageService.removeAccessToken()
@@ -19,16 +17,12 @@ export default {
 }
 </script>
 
-<style lang='scss'>
-.home {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+<style lang='scss' scoped>
 .register-form {
   display: flex;
   flex-direction: column;
   max-width: 300px;
+  width: 100%;
   align-self: center;
 }
 
@@ -38,6 +32,7 @@ export default {
 
 .button-logout {
   max-width: 300px;
+  width: 100%;
   text-align: center;
   align-self: center;
 }
