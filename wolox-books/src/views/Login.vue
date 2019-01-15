@@ -2,16 +2,16 @@
 .home
   form.login-form(@submit.prevent='onSubmit')
     label.label(for='email')
-      | {{$t('register.email')}}
+      | {{$t('register.email.name')}}
     input#email(type='text' v-model='email')
-    .error(v-if='!$v.email.required && submitStatus')
+    .error(v-if='!$v.email.required && submitted')
       | {{$t('register.email.required')}}
     .error(v-if='!$v.email.email')
       | {{$t('register.email.valid')}}
     label.label(for='password')
-      | {{$t('register.password')}}
+      | {{$t('register.password.name')}}
     input#password(type='password' name='password' v-model='password')
-    .error(v-if='!$v.password.required && submitStatus')
+    .error(v-if='!$v.password.required && submitted')
       | {{$t('register.password.required')}}
     button
       | {{$t('register.logIn')}}
@@ -29,14 +29,15 @@ export default {
     return {
       email: null,
       password: null,
-      submitStatus: false
+      submitted: false
     }
   },
   methods: {
     onSubmit () {
       this.$v.$touch()
-      this.submitStatus = this.$v.$invalid
-      if (!this.submitStatus) {
+      this.submitted = this.$v.$invalid
+      debugger
+      if (!this.submitted) {
         logIn({
           session: {
             email: this.email,
