@@ -6,28 +6,28 @@
       | {{$t('title')}}
     label.label(for='firstName')
       | {{$t('register.firstName')}}
-    input#firstName(type='text' name='firstName' v-model='firstName')
+    input.input#firstName(type='text' name='firstName' v-model='firstName')
     label.label(for='lastName')
       | {{$t('register.lastName')}}
-    input#lastName(type='text' name='lastName' v-model='lastName')
+    input.input#lastName(type='text' name='lastName' v-model='lastName')
     label.label(for='email')
       | {{$t('register.email.name')}}
-    input#email(type='text' v-model.trim='email')
+    input.input#email(type='text' v-model.trim='email')
     .error(v-if='!$v.email.required && submitted')
       | {{$t('register.email.required')}}
     .error(v-if='!$v.email.email')
       | {{$t('register.email.valid')}}
     label.label(for='password')
       | {{$t('register.password.name')}}
-    input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
+    input.input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
     .error(v-if='!$v.password.required && submitted')
       | {{$t('register.password.required')}}
     .error(v-if='!$v.password.validatePassword')
       | {{$t('register.password.valid')}}
-    button
+    button.button-signup
       | {{$t('register.signUp')}}
-  router-link.button-login(to='/login')
-    | {{$t('register.logIn')}}
+    router-link.button-login(to='/login')
+      | {{$t('register.logIn')}}
 </template>
 
 <script>

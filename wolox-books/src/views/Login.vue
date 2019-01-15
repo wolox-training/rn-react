@@ -1,22 +1,25 @@
 <template lang='pug'>
 .home
   form.login-form(@submit.prevent='onSubmit')
+    img.title-image(src='../assets/wolox_logo.svg')
+    span.title
+      | {{$t('title')}}
     label.label(for='email')
       | {{$t('register.email.name')}}
-    input#email(type='text' v-model='email')
+    input.input#email(type='text' v-model='email')
     .error(v-if='!$v.email.required && submitted')
       | {{$t('register.email.required')}}
     .error(v-if='!$v.email.email')
       | {{$t('register.email.valid')}}
     label.label(for='password')
       | {{$t('register.password.name')}}
-    input#password(type='password' name='password' v-model='password')
+    input.input#password(type='password' name='password' v-model='password')
     .error(v-if='!$v.password.required && submitted')
       | {{$t('register.password.required')}}
-    button
+    button.button-login
       | {{$t('register.logIn')}}
-  router-link.button-login(to='/sign-up')
-    | {{$t('register.signUp')}}
+    router-link.button-signup(to='/sign-up')
+      | {{$t('register.signUp')}}
 </template>
 
 <script>
@@ -43,6 +46,7 @@ export default {
         logIn(email, password).then(response => {
           if (response.ok) {
             localStorageService.setAccessToken(response.data.access_token)
+            changeHeaders()
             this.$router.push('/auth')
           }
         })
@@ -62,26 +66,74 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import '../scss/variables/sizes';
+@import '../scss/variables/color';
+
 .home {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  height: $content-height;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
   align-self: center;
+  padding: 40px 20px 0 20px ;
+  width: 300px;
+  background-color: #F4F4F4;
+  border-top: 5px solid #00BFFF;
 }
 
 .label {
   text-align: left;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.input {
+  height: 30px;
+  border-radius: 5px;
+}
+
+.button-signup {
+  border: solid 2px $celery;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  background-color: $celery;
+  color: $white;
+  text-align: center;
 }
 
 .button-login {
-  max-width: 300px;
+  border: solid 2px $celery;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  background-color: $white;
+  color: $celery;
   text-align: center;
-  align-self: center;
+  margin-top: 20px;
 }
 </style>
