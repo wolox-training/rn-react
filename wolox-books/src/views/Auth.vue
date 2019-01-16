@@ -15,7 +15,7 @@ import { localStorageService } from '../services/LocalStorage'
 import { clearHeaders } from '../config/api'
 import { getBooks } from '../services/BookService'
 
-import BookList from '@/components/BookList.vue'
+import BookList from '@/components/BookList'
 
 export default {
   name: 'Auth',
