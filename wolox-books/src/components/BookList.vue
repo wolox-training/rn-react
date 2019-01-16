@@ -28,7 +28,7 @@ export default {
 }
 
 .book {
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, .15);
+  box-shadow: 2px 2px 0 $black-shadow;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -36,7 +36,7 @@ export default {
   width: 220px;
   height: 280px;
   margin: 30px;
-  background-color: white;
+  background-color: $white;
 }
 
 .image {
@@ -47,7 +47,7 @@ export default {
 }
 
 .title {
-  color: #000;
+  color: $black;
   font-size: 14px;
   font-weight: 700;
   text-align: left;
@@ -56,7 +56,7 @@ export default {
 }
 
 .author {
-  color: #83888B;
+  color: $oslo-gray;
   font-size: 12px;
   text-align: left;
 }

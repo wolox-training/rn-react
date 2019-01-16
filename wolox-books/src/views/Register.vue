@@ -104,7 +104,7 @@ export default {
   padding: 40px 20px 0 20px ;
   width: 300px;
   background-color: #F4F4F4;
-  border-top: 5px solid #00BFFF;
+  border-top: 5px solid $cerulean;
 }
 
 .label {

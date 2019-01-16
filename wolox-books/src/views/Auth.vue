@@ -50,16 +50,16 @@ export default {
 .content {
   display: flex;
   flex-direction: column;
-  background-color: #F4F4F4;
+  background-color: $wild-sand;
 }
 
 .navbar {
   display: flex;
   height: 60px;
   border-radius: 2px;
-  box-shadow: 0px 1px 10px #999;
+  box-shadow: 0px 1px 10px $gray-shadow;
   justify-content: space-around;
-  background-color: white;
+  background-color: $white;
 }
 
 .logo {
