@@ -78,14 +78,14 @@ export default {
 
 .title {
   text-align: center;
-  margin: 10px 0 30px 0;
+  margin: 10px 0 30px;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
   align-self: center;
-  padding: 40px 20px 0 20px ;
+  padding: 40px 20px 0;
   width: 300px;
   background-color: #F4F4F4;
   border-top: 5px solid $cerulean;
@@ -94,7 +94,7 @@ export default {
 .label {
   text-align: left;
   padding-left: 10px;
-  margin: 10px 0 5px 0;
+  margin: 10px 0 5px;
 }
 
 .input {
