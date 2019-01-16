@@ -47,6 +47,8 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import '../scss/variables/color';
+
 .content {
   display: flex;
   flex-direction: column;

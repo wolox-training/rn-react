@@ -18,6 +18,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../scss/variables/color';
+
 .books {
   display: flex;
   flex-wrap: wrap;
