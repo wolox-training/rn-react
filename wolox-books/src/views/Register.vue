@@ -24,9 +24,9 @@
       | {{$t('register.password.required')}}
     .error(v-if='!$v.password.validatePassword')
       | {{$t('register.password.valid')}}
-    button.button-signup
+    button.button-main
       | {{$t('register.signUp')}}
-    router-link.button-login(to='/login')
+    router-link.button-secondary(to='/login')
       | {{$t('register.logIn')}}
 </template>
 
@@ -116,38 +116,5 @@ export default {
 .input {
   height: 30px;
   border-radius: 5px;
-}
-
-.button-login {
-  border: solid 2px $celery;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 14px;
-  margin-bottom: 20px;
-  padding: 15px;
-  width: 100%;
-  background-color: $celery;
-  color: $white;
-  text-align: center;
-}
-
-.button-signup {
-  border: solid 2px $celery;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 14px;
-  padding: 15px;
-  width: 100%;
-  background-color: $white;
-  color: $celery;
-  text-align: center;
-  margin: 20px 0;
-
 }
 </style>

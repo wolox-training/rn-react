@@ -16,9 +16,9 @@
     input.input#password(type='password' name='password' v-model='password')
     .error(v-if='!$v.password.required && submitted')
       | {{$t('register.password.required')}}
-    button.button-login
+    button.button-main
       | {{$t('register.logIn')}}
-    router-link.button-signup(to='/sign-up')
+    router-link.button-secondary(to='/sign-up')
       | {{$t('register.signUp')}}
 </template>
 
@@ -100,37 +100,5 @@ export default {
 .input {
   height: 30px;
   border-radius: 5px;
-}
-
-.button-signup {
-  border: solid 2px $celery;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 14px;
-  margin-bottom: 20px;
-  padding: 15px;
-  width: 100%;
-  background-color: $celery;
-  color: $white;
-  text-align: center;
-}
-
-.button-login {
-  border: solid 2px $celery;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 14px;
-  padding: 15px;
-  width: 100%;
-  background-color: $white;
-  color: $celery;
-  text-align: center;
-  margin: 20px 0;
 }
 </style>
