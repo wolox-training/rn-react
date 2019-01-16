@@ -41,7 +41,6 @@ export default {
       if (response.ok) {
         this.books = response.data
       }
-      debugger
     }
   }
 }
