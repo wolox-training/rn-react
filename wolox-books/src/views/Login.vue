@@ -78,8 +78,7 @@ export default {
 
 .title {
   text-align: center;
-  margin-bottom: 30px;
-  margin-top: 10px;
+  margin: 10px 0 30px 0;
 }
 
 .login-form {
@@ -95,8 +94,7 @@ export default {
 .label {
   text-align: left;
   padding-left: 10px;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin: 10px 0 5px 0;
 }
 
 .input {
@@ -128,12 +126,11 @@ export default {
   font-size: 14px;
   font-weight: 600;
   line-height: 14px;
-  margin-bottom: 20px;
   padding: 15px;
   width: 100%;
   background-color: $white;
   color: $celery;
   text-align: center;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 </style>

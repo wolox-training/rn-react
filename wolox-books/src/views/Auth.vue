@@ -7,7 +7,7 @@
         | {{$t('title')}}
     button.button-logout(@click='logout')
       | Logout
-  BookList(:books='books')
+  book-list(:books='books')
 </template>
 
 <script>
