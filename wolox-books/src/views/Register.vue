@@ -103,7 +103,7 @@ export default {
   align-self: center;
   padding: 40px 20px 0;
   width: 300px;
-  background-color: #F4F4F4;
+  background-color: $wild-sand;
   border-top: 5px solid $cerulean;
 }
 
