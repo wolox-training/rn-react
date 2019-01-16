@@ -1,11 +1,13 @@
 <template lang='pug'>
-.navbar
-  .logo
-    img.title-image(src='../assets/wolox_logo.svg')
-    span.title
-      | {{$t('title')}}
-  button.button-logout(@click="logout")
-    | Logout
+.content
+  .navbar
+    .logo
+      img.title-image(src='../assets/wolox_logo.svg')
+      span.title
+        | {{$t('title')}}
+    button.button-logout(@click="logout")
+      | Logout
+  BookList(:books="this.books")
 </template>
 
 <script>
@@ -13,12 +15,17 @@ import { localStorageService } from '../services/LocalStorage'
 import { clearHeaders } from '../config/api'
 import { getBooks } from '../services/BookService'
 
+import BookList from '@/components/BookList.vue'
+
 export default {
   name: 'Auth',
   data () {
     return {
       books: null
     }
+  },
+  components: {
+    BookList
   },
   created () {
     this.fetchBooks()
@@ -31,22 +38,29 @@ export default {
     },
     async fetchBooks () {
       const response = await getBooks()
-      debugger
       if (response.ok) {
         this.books = response.data
       }
+      debugger
     }
   }
 }
 </script>
 
 <style lang='scss' scoped>
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: #F4F4F4;
+}
+
 .navbar {
   display: flex;
   height: 60px;
   border-radius: 2px;
   box-shadow: 0px 1px 10px #999;
   justify-content: space-around;
+  background-color: white;
 }
 
 .logo {
