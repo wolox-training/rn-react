@@ -19,12 +19,12 @@ export default {
 
 <style scoped lang="scss">
 .books {
-  flex-direction: row;
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
+  width: 100%;
   justify-content: center;
-  align-self: center;
+  margin: auto;
 }
 
 .book {

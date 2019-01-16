@@ -2,12 +2,12 @@
 .content
   .navbar
     .logo
-      img.title-image(src='../assets/wolox_logo.svg')
+      img.title-image(src='../assets/wolox_logo.svg' alt='wolox logo')
       span.title
         | {{$t('title')}}
-    button.button-logout(@click="logout")
+    button.button-logout(@click='logout')
       | Logout
-  BookList(:books="this.books")
+  BookList(:books='books')
 </template>
 
 <script>

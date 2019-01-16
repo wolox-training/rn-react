@@ -1,7 +1,7 @@
 <template lang='pug'>
 .home
   form.login-form(@submit.prevent='onSubmit')
-    img.title-image(src='../assets/wolox_logo.svg')
+    img.title-image(src='../assets/wolox_logo.svg' alt='logo')
     span.title
       | {{$t('title')}}
     label.label(for='email')

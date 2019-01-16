@@ -1,7 +1,7 @@
 <template lang='pug'>
 .home
   form.register-form(@submit.prevent='onSubmit')
-    img.title-image(src='../assets/wolox_logo.svg')
+    img.title-image(src='../assets/wolox_logo.svg' alt ='logo')
     span.title
       | {{$t('title')}}
     label.label(for='firstName')
@@ -94,8 +94,7 @@ export default {
 
 .title {
   text-align: center;
-  margin-bottom: 30px;
-  margin-top: 10px;
+  margin: 10px 0 30px 0;
 }
 
 .register-form {
