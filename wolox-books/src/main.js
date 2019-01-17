@@ -5,6 +5,7 @@ import store from './store'
 import VueI18n from 'vue-i18n'
 import { Register as messages } from './config/i18n'
 import Vuelidate from 'vuelidate'
+import { changeHeaders } from './config/api'
 
 Vue.use(Vuelidate)
 
@@ -16,6 +17,8 @@ const i18n = new VueI18n({
 })
 
 Vue.config.productionTip = true
+
+changeHeaders()
 
 new Vue({
   i18n,

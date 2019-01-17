@@ -1,30 +1,33 @@
 <template lang='pug'>
 .home
   form.register-form(@submit.prevent='onSubmit')
+    img.title-image(src='../assets/wolox_logo.svg' alt ='logo')
+    span.title
+      | {{$t('title')}}
     label.label(for='firstName')
       | {{$t('register.firstName')}}
-    input#firstName(type='text' name='firstName' v-model='firstName')
+    input.input#firstName(type='text' name='firstName' v-model='firstName')
     label.label(for='lastName')
       | {{$t('register.lastName')}}
-    input#lastName(type='text' name='lastName' v-model='lastName')
+    input.input#lastName(type='text' name='lastName' v-model='lastName')
     label.label(for='email')
       | {{$t('register.email.name')}}
-    input#email(type='text' v-model.trim='email')
+    input.input#email(type='text' v-model.trim='email')
     .error(v-if='!$v.email.required && submitted')
       | {{$t('register.email.required')}}
     .error(v-if='!$v.email.email')
       | {{$t('register.email.valid')}}
     label.label(for='password')
       | {{$t('register.password.name')}}
-    input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
+    input.input#password(type='password' name='password' v-model='password' v-model.trim='$v.password.$model')
     .error(v-if='!$v.password.required && submitted')
       | {{$t('register.password.required')}}
     .error(v-if='!$v.password.validatePassword')
       | {{$t('register.password.valid')}}
-    button
+    button.button-main
       | {{$t('register.signUp')}}
-  router-link.button-login(to='/login')
-    | {{$t('register.logIn')}}
+    router-link.button-secondary(to='/login')
+      | {{$t('register.logIn')}}
 </template>
 
 <script>
@@ -79,28 +82,39 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import '../scss/variables/sizes';
+@import '../scss/variables/color';
+
 .home {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  height: $content-height;
+}
+
+.title {
+  text-align: center;
+  margin: 10px 0 30px;
 }
 
 .register-form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
-  width: 100%;
   align-self: center;
+  padding: 40px 20px 0;
+  width: 300px;
+  background-color: $wild-sand;
+  border-top: 5px solid $cerulean;
 }
 
 .label {
   text-align: left;
+  padding-left: 10px;
+  margin: 10px 0 5px;
 }
 
-.button-login {
-  max-width: 300px;
-  width: 100%;
-  text-align: center;
-  align-self: center;
+.input {
+  height: 30px;
+  border-radius: 5px;
 }
 </style>

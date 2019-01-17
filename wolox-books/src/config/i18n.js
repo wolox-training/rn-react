@@ -1,5 +1,6 @@
 export const Register = {
   en: {
+    title: 'BOOKS',
     register: {
       firstName: 'First Name',
       lastName: 'Last Name',
@@ -18,6 +19,7 @@ export const Register = {
     }
   },
   es: {
+    title: 'LIBROS',
     register: {
       firstName: 'Nombre',
       lastName: 'Apellido',

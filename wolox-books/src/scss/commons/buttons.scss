@@ -1,0 +1,33 @@
+@import '../variables/color';
+
+.button-main {
+  border: solid 2px $celery;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  padding: 15px;
+  width: 100%;
+  background-color: $white;
+  color: $celery;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.button-secondary {
+  border: solid 2px $celery;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  background-color: $celery;
+  color: $white;
+  text-align: center;
+}
