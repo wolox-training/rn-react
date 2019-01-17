@@ -19,9 +19,9 @@ import BookList from '@/components/BookList'
 
 export default {
   name: 'Auth',
-  computed: mapState([
+  computed: { ...mapState([
     'books'
-  ]),
+  ]) },
   components: {
     BookList
   },

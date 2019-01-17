@@ -9,8 +9,8 @@ export default new Vuex.Store({
     books: []
   },
   mutations: {
-    setBooks (state, payload) {
-      state.books = payload.books
+    setBooks (state, { books }) {
+      state.books = books
     }
   },
   actions: {
