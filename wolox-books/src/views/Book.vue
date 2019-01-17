@@ -1,12 +1,6 @@
 <template lang='pug'>
 .content
-  .navbar
-    .logo
-      img.title-image(src='../assets/wolox_logo.svg' alt='wolox logo')
-      span.title
-        | {{$t('title')}}
-    button.button-logout(@click='logout')
-      | Logout
+  navbar
   .book
     img.book-image(:src='book.image_url' :alt='book.title')
     .book-info
@@ -19,24 +13,25 @@
         span.book-subtitle
           | Book author:
         span.book-data
-          |  {{book.author}}
+          | {{book.author}}
       .book-content
         span.book-subtitle
           | Publisher:
         span.book-data
-          |  {{book.publisher}}
+          | {{book.publisher}}
       .book-content
         span.book-subtitle
           | Year of publication:
         span.book-data
-          |  {{book.year}}
+          | {{book.year}}
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 import { localStorageService } from '../services/LocalStorage'
 import { clearHeaders } from '../config/api'
-import BookList from '@/components/BookList'
+
+import Navbar from '@/components/Navbar'
 
 export default {
   name: 'Auth',
@@ -45,7 +40,7 @@ export default {
       'book'
     ]) },
   components: {
-    BookList
+    Navbar
   },
   created () {
     const { id } = this.$route.params
@@ -72,41 +67,6 @@ export default {
   flex-direction: column;
   background-color: $wild-sand;
   height: 100vh;
-}
-
-.navbar {
-  display: flex;
-  height: 60px;
-  border-radius: 2px;
-  box-shadow: 0px 1px 10px $gray-shadow;
-  justify-content: space-around;
-  background-color: $white;
-}
-
-.logo {
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.title {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.label {
-  text-align: left;
-}
-
-.title-image {
-  height: 30px;
-}
-
-.button-logout {
-  height: 20px;
-  width: 20px;
-  align-self: center;
-  text-align: center;
 }
 
 .book {
