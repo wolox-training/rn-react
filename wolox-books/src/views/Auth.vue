@@ -13,17 +13,15 @@
 <script>
 import { localStorageService } from '../services/LocalStorage'
 import { clearHeaders } from '../config/api'
-import { getBooks } from '../services/BookService'
+import { mapState, mapActions } from 'vuex'
 
 import BookList from '@/components/BookList'
 
 export default {
   name: 'Auth',
-  data () {
-    return {
-      books: null
-    }
-  },
+  computed: mapState([
+    'books'
+  ]),
   components: {
     BookList
   },
@@ -36,12 +34,9 @@ export default {
       clearHeaders()
       this.$router.push('/login')
     },
-    async fetchBooks () {
-      const response = await getBooks()
-      if (response.ok) {
-        this.books = response.data
-      }
-    }
+    ...mapActions([
+      'fetchBooks'
+    ])
   }
 }
 </script>
