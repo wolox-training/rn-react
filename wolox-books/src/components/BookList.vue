@@ -1,7 +1,7 @@
 <template lang='pug'>
 .books
-  .book(v-for="book in books" :key="book.id")
-    img.image(:src="book.image_url" :alt="book.title")
+  router-link.book(v-for='book in books' :key='book.id' :to='`/books/${book.id}`')
+    img.image(:src='book.image_url' :alt='book.title')
     h3.title
       | {{book.title}}
     span.author
@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 @import '../scss/variables/color';
 
 .books {

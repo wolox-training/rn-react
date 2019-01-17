@@ -20,6 +20,9 @@ export default new Router({
       name: 'auth',
       component: () => import('./views/Auth.vue')
     },
+    { path: '/books/:id',
+      component: () => import('./views/Book.vue')
+    },
     {
       path: '/',
       redirect: { name: 'login' }
